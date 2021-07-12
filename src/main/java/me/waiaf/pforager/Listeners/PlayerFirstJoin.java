@@ -16,6 +16,7 @@ public class PlayerFirstJoin implements Listener {
         if (!player.hasPlayedBefore()){
 
             player.getInventory().addItem(ItemManager.IronPickaxe);
+            player.getInventory().addItem(ItemManager.IronShovel);
 
         }
 
