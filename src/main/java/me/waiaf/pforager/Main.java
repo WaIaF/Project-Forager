@@ -17,11 +17,6 @@ public final class Main extends JavaPlugin {
 
     }
 
-    @Override
-    public void onDisable(){
-        // Currently Unused
-    }
-
     private void registerEvents(){
 
         pluginManager.registerEvents(new PlayerFirstJoin(), this);
