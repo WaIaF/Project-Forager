@@ -1,0 +1,6 @@
+name: Pforager
+version: ${project.version}
+main: me.waiaf.pforager.Main
+api-version: 1.17
+authors: [ WaIaF ]
+description: A remake of the game Forager in Minecraft
