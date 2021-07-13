@@ -25,12 +25,19 @@ public class DigGrass implements Listener {
         ItemMeta itemMeta = itemStack.getItemMeta();
         assert itemMeta != null;
         String itemName = itemMeta.getDisplayName();
-        if (itemName.equalsIgnoreCase(ChatColor.of("#5DBB63") + "Xẻng sắt")){
+        if (itemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Xẻng sắt")){
 
             Location location = block.getLocation();
             location.setY(location.getBlockY() + 0.6575);
             Random random = new Random();
             int rng = random.nextInt(100) + 1;
+
+            /*
+            *   Iron Shovel Chances:
+            *       80% Nothing
+            *       15% Sand
+            *       5% Iron Ore
+            */
 
             if (rng >= 80){
 
