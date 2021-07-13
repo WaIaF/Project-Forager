@@ -1,6 +1,7 @@
 package me.waiaf.pforager;
 
 import me.waiaf.pforager.Commands.GetItem;
+import me.waiaf.pforager.Listeners.CraftingTableInteract;
 import me.waiaf.pforager.Listeners.DigGrass;
 import me.waiaf.pforager.Listeners.PlayerFirstJoin;
 import me.waiaf.pforager.Listeners.StoneBreak;
@@ -26,6 +27,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new PlayerFirstJoin(), this);
         pluginManager.registerEvents(new StoneBreak(), this);
         pluginManager.registerEvents(new DigGrass(), this);
+        pluginManager.registerEvents(new CraftingTableInteract(), this);
 
     }
 
