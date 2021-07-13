@@ -1,5 +1,5 @@
 name: Pforager
-version: ${project.version}
+version: 0.1A
 main: me.waiaf.pforager.Main
 api-version: 1.17
 authors: [ WaIaF ]
