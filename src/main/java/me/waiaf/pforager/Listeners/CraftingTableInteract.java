@@ -35,6 +35,7 @@ public class CraftingTableInteract implements Listener {
         FurnaceLore.add(ChatColor.GRAY + "Một cái lò nung bình thường");
         FurnaceLore.add("");
         FurnaceLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        FurnaceLore.add("");
         FurnaceLore.add(ChatColor.WHITE + "   20x Đá cuội");
         assert FurnaceMeta != null;
         FurnaceMeta.setLore(FurnaceLore);

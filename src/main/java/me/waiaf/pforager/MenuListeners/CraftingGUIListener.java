@@ -7,7 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class CraftingGUIListener implements Listener {
 
@@ -18,25 +17,19 @@ public class CraftingGUIListener implements Listener {
 
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
+
         ItemStack clickedItem = event.getCurrentItem();
+        Material clickedItemMaterial = clickedItem.getType();
 
-        if (!clickedItem.getType().equals(Material.AIR)){
+        if (clickedItemMaterial.equals(Material.FURNACE)){
 
-            ItemMeta clickedItemMeta = clickedItem.getItemMeta();
-            assert clickedItemMeta != null;
-            String itemName = clickedItemMeta.getDisplayName();
+            if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
 
-            if (itemName.equalsIgnoreCase(ChatColor.GRAY + "Một cái lò nung bình thường")){
+                player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
 
-                if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
+            } else {
 
-                    player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
-
-                } else {
-
-                    player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
-
-                }
+                player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
 
             }
 

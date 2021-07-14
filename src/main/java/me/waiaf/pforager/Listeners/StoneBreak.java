@@ -9,6 +9,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Random;
+
 public class StoneBreak implements Listener {
     
     @EventHandler
@@ -26,7 +28,20 @@ public class StoneBreak implements Listener {
             event.getBlock().setType(Material.AIR);
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
+            Random random = new Random();
+            int rng = random.nextInt(100) + 1;
+
+            if (rng >= 51){
+
+                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
+
+            }
+
+            if (rng >= 90){
+
+                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
+
+            }
 
         }
     }
