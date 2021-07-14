@@ -20,6 +20,7 @@ public class CraftingTableInteract implements Listener {
     @EventHandler
     public void CraftingTableInteractEvent(PlayerInteractEvent event){
 
+        if (event.getClickedBlock() == null) return;
         if (!event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE)) return;
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 
