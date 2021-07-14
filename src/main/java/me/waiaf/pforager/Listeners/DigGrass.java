@@ -17,44 +17,49 @@ public class DigGrass implements Listener {
     @EventHandler
     public void DigGrassEvent(PlayerInteractEvent event){
 
+        if (event.getClickedBlock() == null) return;
         Block block = event.getClickedBlock();
         assert block != null;
         Material material = block.getType();
         if (!material.equals(Material.GRASS_BLOCK)) return;
         ItemStack itemStack = event.getPlayer().getInventory().getItemInMainHand();
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        assert itemMeta != null;
-        String itemName = itemMeta.getDisplayName();
-        if (itemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Xẻng sắt")){
+        if (itemStack.hasItemMeta()){
 
-            Location location = block.getLocation();
-            location.setY(location.getBlockY() + 0.6575);
-            Random random = new Random();
-            int rng = random.nextInt(100) + 1;
+            ItemMeta itemMeta = itemStack.getItemMeta();
+            String itemName = itemMeta.getDisplayName();
 
-            /*
-            *   Iron Shovel Chances:
-            *       90% Nothing
-            *       8% Sand
-            *       2% Iron Ore
-            */
+            if (itemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Xẻng sắt")){
 
-            if (rng >= 90){
+                Location location = block.getLocation();
+                location.setY(location.getBlockY() + 0.6575);
+                Random random = new Random();
+                int rng = random.nextInt(100) + 1;
 
-                if (rng > 90 && rng <= 98){
+                /*
+                 *   Iron Shovel Chances:
+                 *       90% Nothing
+                 *       8% Sand
+                 *       2% Iron Ore
+                 */
 
-                    block.getWorld().dropItemNaturally(location, new ItemStack(Material.SAND, 1));
+                if (rng >= 90){
 
-                } else {
+                    if (rng > 90 && rng <= 98){
 
-                    block.getWorld().dropItemNaturally(location, new ItemStack(Material.IRON_ORE, 1));
+                        block.getWorld().dropItemNaturally(location, new ItemStack(Material.SAND, 1));
+
+                    } else {
+
+                        block.getWorld().dropItemNaturally(location, new ItemStack(Material.IRON_ORE, 1));
+
+                    }
 
                 }
 
             }
 
-        }
 
+        }
 
     }
 }
