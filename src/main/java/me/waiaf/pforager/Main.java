@@ -1,10 +1,7 @@
 package me.waiaf.pforager;
 
 import me.waiaf.pforager.Commands.GetItem;
-import me.waiaf.pforager.Listeners.CraftingTableInteract;
-import me.waiaf.pforager.Listeners.DigGrass;
-import me.waiaf.pforager.Listeners.PlayerFirstJoin;
-import me.waiaf.pforager.Listeners.StoneBreak;
+import me.waiaf.pforager.Listeners.*;
 import me.waiaf.pforager.MenuListeners.CraftingGUIListener;
 import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.plugin.PluginManager;
@@ -30,6 +27,8 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new DigGrass(), this);
         pluginManager.registerEvents(new CraftingTableInteract(), this);
         pluginManager.registerEvents(new CraftingGUIListener(), this);
+        pluginManager.registerEvents(new WoodBreak(), this);
+        pluginManager.registerEvents(new LogScripCanceller(), this);
 
     }
 

@@ -13,11 +13,13 @@ public class ItemManager{
 
     public static ItemStack IronPickaxe;
     public static ItemStack IronShovel;
+    public static ItemStack IronAxe;
 
     public static void init(){
 
         createIronPickaxe();
         createIronShovel();
+        createIronAxe();
 
     }
 
@@ -52,6 +54,23 @@ public class ItemManager{
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         item.setItemMeta(meta);
         IronShovel = item;
+
+    }
+
+    private static void createIronAxe(){
+
+        ItemStack item = new ItemStack(Material.IRON_AXE, 1);
+        ItemMeta meta = item.getItemMeta();
+        assert meta != null;
+        meta.setDisplayName(ChatColor.of("#F5FEFD") + "Rìu sắt");
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add(ChatColor.GRAY + "Một cây rìu bình thường được làm từ sắt");
+        meta.setLore(lore);
+        meta.setUnbreakable(true);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        item.setItemMeta(meta);
+        IronAxe = item;
 
     }
 }

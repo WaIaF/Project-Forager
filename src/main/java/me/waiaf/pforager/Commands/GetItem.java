@@ -41,6 +41,12 @@ public class GetItem implements CommandExecutor {
                                     player.getInventory().addItem(ItemManager.IronShovel);
                                     break;
 
+                                case 3:
+
+                                    player.sendMessage(ChatColor.GREEN + "Lấy vật phẩm thành công");
+                                    player.getInventory().addItem(ItemManager.IronAxe);
+                                    break;
+
                                 default:
 
                                     player.sendMessage(ChatColor.RED + "ID không tồn tại");

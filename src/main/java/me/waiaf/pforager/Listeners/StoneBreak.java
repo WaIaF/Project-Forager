@@ -31,7 +31,7 @@ public class StoneBreak implements Listener {
             Random random = new Random();
             int rng = random.nextInt(100) + 1;
 
-            if (rng >= 51){
+            if (rng >= 60){
 
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
 
