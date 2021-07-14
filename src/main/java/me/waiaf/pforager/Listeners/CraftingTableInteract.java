@@ -42,6 +42,8 @@ public class CraftingTableInteract implements Listener {
 
         inventory.setItem(10, Furnace);
 
+        player.openInventory(inventory);
+
         player.sendMessage(ChatColor.WHITE + "DEBUG: CRAFTING TABLE RIGHT CLICKED");
 
     }

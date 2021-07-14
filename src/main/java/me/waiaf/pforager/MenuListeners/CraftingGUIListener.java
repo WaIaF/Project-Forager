@@ -19,25 +19,28 @@ public class CraftingGUIListener implements Listener {
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
         ItemStack clickedItem = event.getCurrentItem();
-        assert clickedItem != null;
-        ItemMeta clickedItemMeta = clickedItem.getItemMeta();
-        assert clickedItemMeta != null;
-        String itemName = clickedItemMeta.getDisplayName();
 
-        if (itemName.equalsIgnoreCase(ChatColor.GRAY + "Một cái lò nung bình thường")){
+        if (!clickedItem.getType().equals(Material.AIR)){
 
-            if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
+            ItemMeta clickedItemMeta = clickedItem.getItemMeta();
+            assert clickedItemMeta != null;
+            String itemName = clickedItemMeta.getDisplayName();
 
-                player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
+            if (itemName.equalsIgnoreCase(ChatColor.GRAY + "Một cái lò nung bình thường")){
 
-            } else {
+                if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
 
-                player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
+                    player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
+
+                } else {
+
+                    player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
+
+                }
 
             }
 
         }
-
 
     }
 }
