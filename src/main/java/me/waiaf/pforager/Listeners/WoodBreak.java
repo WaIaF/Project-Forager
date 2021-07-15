@@ -16,6 +16,13 @@ public class WoodBreak implements Listener {
     @EventHandler
     public void WoodBreakEvent(BlockBreakEvent event){
 
+        if (!event.getBlock().getType().equals(Material.SPRUCE_LOG) ||
+                !event.getBlock().getType().equals(Material.OAK_LOG) ||
+                !event.getBlock().getType().equals(Material.DARK_OAK_LOG) ||
+                !event.getBlock().getType().equals(Material.ACACIA_LOG) ||
+                !event.getBlock().getType().equals(Material.BIRCH_LOG) ||
+                !event.getBlock().getType().equals(Material.JUNGLE_LOG)) return;
+
         Player player = event.getPlayer();
         ItemStack itemStack = player.getInventory().getItemInMainHand();
         if (itemStack.hasItemMeta()){
