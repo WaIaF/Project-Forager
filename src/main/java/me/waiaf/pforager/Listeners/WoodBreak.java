@@ -35,9 +35,7 @@ public class WoodBreak implements Listener {
 
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
+                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS, 3));
 
                         if (rng >= 60){
 
@@ -57,9 +55,7 @@ public class WoodBreak implements Listener {
 
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
+                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS, 3));
 
                         if (rng >= 60){
 
@@ -79,9 +75,7 @@ public class WoodBreak implements Listener {
 
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
+                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS, 3));
 
                         if (rng >= 60){
 
@@ -101,9 +95,7 @@ public class WoodBreak implements Listener {
 
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
+                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS, 3));
 
                         if (rng >= 60){
 
@@ -123,9 +115,7 @@ public class WoodBreak implements Listener {
 
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
+                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS, 3));
 
                         if (rng >= 60){
 
@@ -145,9 +135,7 @@ public class WoodBreak implements Listener {
 
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
+                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS, 3));
 
                         if (rng >= 60){
 

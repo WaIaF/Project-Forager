@@ -1,5 +1,6 @@
 package me.waiaf.pforager.Listeners;
 
+import me.waiaf.pforager.Main;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
@@ -26,6 +28,7 @@ public class DigGrass implements Listener {
         if (itemStack.hasItemMeta()){
 
             ItemMeta itemMeta = itemStack.getItemMeta();
+            assert itemMeta != null;
             String itemName = itemMeta.getDisplayName();
 
             if (itemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Xẻng sắt")){
@@ -59,7 +62,28 @@ public class DigGrass implements Listener {
             }
 
 
+
+
         }
+
+        TurnPathBackToDirt(block);
+
+    }
+
+    private void TurnPathBackToDirt(Block block){
+
+        new BukkitRunnable(){
+
+            @Override
+            public void run(){
+
+                if (!block.getType().equals(Material.DIRT_PATH)) return;
+
+                block.setType(Material.DIRT);
+
+            }
+
+        }.runTaskLater(Main.getPlugin(Main.class), 200);
 
     }
 }
