@@ -28,6 +28,7 @@ public class StoneBreak implements Listener {
             event.getBlock().setType(Material.AIR);
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
             Random random = new Random();
             int rng = random.nextInt(100) + 1;
 

@@ -29,7 +29,7 @@ public class FurnaceGUIListener implements Listener {
 
             if (player.getInventory().containsAtLeast(new ItemStack(Material.OAK_PLANKS), 8)){
 
-                player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 8));
+                player.getInventory().removeItem(new ItemStack(Material.OAK_PLANKS, 8));
                 player.getInventory().addItem(new ItemStack(Material.COAL, 1));
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
