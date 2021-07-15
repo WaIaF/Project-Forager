@@ -27,7 +27,7 @@ public class CraftingTableInteract implements Listener {
         Player player = event.getPlayer();
         event.setCancelled(true);
 
-        Inventory inventory = Bukkit.createInventory(player, 36, "Bàn chế tạo");
+        Inventory inventory = Bukkit.createInventory(player, 45, "Bàn chế tạo");
 
         ItemStack Furnace = new ItemStack(Material.FURNACE, 1);
         ItemMeta FurnaceMeta = Furnace.getItemMeta();
@@ -45,8 +45,6 @@ public class CraftingTableInteract implements Listener {
         inventory.setItem(10, Furnace);
 
         player.openInventory(inventory);
-
-        player.sendMessage(ChatColor.WHITE + "DEBUG: CRAFTING TABLE RIGHT CLICKED");
 
     }
 
