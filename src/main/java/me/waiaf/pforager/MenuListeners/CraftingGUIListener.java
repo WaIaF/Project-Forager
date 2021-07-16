@@ -25,20 +25,40 @@ public class CraftingGUIListener implements Listener {
 
         Material clickedItemMaterial = clickedItem.getType();
 
-        if (clickedItemMaterial.equals(Material.FURNACE)){
+        switch (clickedItemMaterial){
 
-            if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
+            case FURNACE:
 
-                player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
-                player.getInventory().addItem(new ItemStack(Material.FURNACE, 1));
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
 
-            } else {
+                    player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
+                    player.getInventory().addItem(new ItemStack(Material.FURNACE, 1));
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
-                player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
-                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+                } else {
 
-            }
+                    player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
+                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+
+                }
+
+                break;
+
+            case ANVIL:
+
+                if (player.getInventory().containsAtLeast(new ItemStack(Material.BRICK), 10) || player.getInventory().containsAtLeast(new ItemStack(Material.IRON_INGOT), 10)){
+
+                    player.getInventory().removeItem(new ItemStack(Material.BRICK, 10));
+                    player.getInventory().removeItem(new ItemStack(Material.IRON_INGOT, 10));
+                    player.getInventory().addItem(new ItemStack(Material.ANVIL, 1));
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+
+                } else {
+
+                    player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
+                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+
+                }
 
         }
 

@@ -42,7 +42,23 @@ public class CraftingTableInteract implements Listener {
         FurnaceMeta.setLore(FurnaceLore);
         Furnace.setItemMeta(FurnaceMeta);
 
+        ItemStack Anvil = new ItemStack(Material.ANVIL, 1);
+        ItemMeta AnvilMeta = Anvil.getItemMeta();
+        List<String> AnvilLore = new ArrayList<>();
+        AnvilLore.add("");
+        AnvilLore.add(ChatColor.GRAY + "Dùng để chế tạo công cụ");
+        AnvilLore.add("");
+        AnvilLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        AnvilLore.add("");
+        AnvilLore.add(ChatColor.WHITE + "   10x Viên gạch");
+        AnvilLore.add(ChatColor.WHITE + "   10x Sắt");
+
+        assert AnvilMeta != null;
+        AnvilMeta.setLore(AnvilLore);
+        Anvil.setItemMeta(AnvilMeta);
+
         inventory.setItem(10, Furnace);
+        inventory.setItem(11, Anvil);
 
         player.openInventory(inventory);
 

@@ -40,14 +40,14 @@ public class DigGrass implements Listener {
 
                 /*
                  *   Iron Shovel Chances:
-                 *       90% Nothing
-                 *       8% Sand
-                 *       2% Iron Ore
+                 *       95% Nothing
+                 *       4% Sand
+                 *       1% Iron Ore
                  */
 
-                if (rng >= 90){
+                if (rng >= 96){
 
-                    if (rng > 90 && rng <= 98){
+                    if (rng <= 99){
 
                         block.getWorld().dropItemNaturally(location, new ItemStack(Material.SAND, 1));
 
@@ -79,7 +79,7 @@ public class DigGrass implements Listener {
 
                 if (!block.getType().equals(Material.DIRT_PATH)) return;
 
-                block.setType(Material.DIRT);
+                block.setType(Material.GRASS_BLOCK);
 
             }
 

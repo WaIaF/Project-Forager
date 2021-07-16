@@ -2,6 +2,7 @@ package me.waiaf.pforager.Listeners;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,18 +37,7 @@ public class WoodBreak implements Listener {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
                         event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS, 3));
-
-                        if (rng >= 60){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
-
-                        }
-
-                        if (rng >= 90){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
-
-                        }
+                        RNGBonus(new ItemStack(Material.ACACIA_PLANKS), event.getBlock());
 
                         break;
 
@@ -56,18 +46,7 @@ public class WoodBreak implements Listener {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
                         event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS, 3));
-
-                        if (rng >= 60){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
-
-                        }
-
-                        if (rng >= 90){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
-
-                        }
+                        RNGBonus(new ItemStack(Material.BIRCH_PLANKS), event.getBlock());
 
                         break;
 
@@ -76,18 +55,7 @@ public class WoodBreak implements Listener {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
                         event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS, 3));
-
-                        if (rng >= 60){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
-
-                        }
-
-                        if (rng >= 90){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
-
-                        }
+                        RNGBonus(new ItemStack(Material.DARK_OAK_PLANKS), event.getBlock());
 
                         break;
 
@@ -96,18 +64,7 @@ public class WoodBreak implements Listener {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
                         event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS, 3));
-
-                        if (rng >= 60){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
-
-                        }
-
-                        if (rng >= 90){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
-
-                        }
+                        RNGBonus(new ItemStack(Material.OAK_PLANKS), event.getBlock());
 
                         break;
 
@@ -116,18 +73,7 @@ public class WoodBreak implements Listener {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
                         event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS, 3));
-
-                        if (rng >= 60){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
-
-                        }
-
-                        if (rng >= 90){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
-
-                        }
+                        RNGBonus(new ItemStack(Material.JUNGLE_PLANKS), event.getBlock());
 
                         break;
 
@@ -136,18 +82,7 @@ public class WoodBreak implements Listener {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
                         event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS, 3));
-
-                        if (rng >= 60){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
-
-                        }
-
-                        if (rng >= 90){
-
-                            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
-
-                        }
+                        RNGBonus(new ItemStack(Material.SPRUCE_PLANKS), event.getBlock());
 
                         break;
                 }
@@ -205,4 +140,24 @@ public class WoodBreak implements Listener {
         }
 
     }
+
+    private void RNGBonus(ItemStack itemStack, Block block){
+
+        Random random = new Random();
+        int rng = random.nextInt(100) + 1;
+
+        if (rng >= 60){
+
+            block.getWorld().dropItemNaturally(block.getLocation(), itemStack);
+
+        }
+
+        if (rng >= 90){
+
+            block.getWorld().dropItemNaturally(block.getLocation(), itemStack);
+
+        }
+
+    }
+
 }

@@ -25,12 +25,66 @@ public class FurnaceGUIListener implements Listener {
 
         Material clickedItemMaterial = clickedItem.getType();
 
-        if (clickedItemMaterial.equals(Material.COAL)){
+        switch (clickedItemMaterial){
 
-            if (player.getInventory().containsAtLeast(new ItemStack(Material.OAK_PLANKS), 8)){
+            case COAL:
 
-                player.getInventory().removeItem(new ItemStack(Material.OAK_PLANKS, 8));
-                player.getInventory().addItem(new ItemStack(Material.COAL, 1));
+                SmeltOre(player, Material.OAK_PLANKS, 8, Material.COAL, 1, 0);
+
+                break;
+
+            case IRON_INGOT:
+
+                SmeltOre(player, Material.RAW_IRON, 1, Material.IRON_INGOT, 1, 1);
+
+                break;
+
+            case GOLD_INGOT:
+
+                SmeltOre(player, Material.RAW_GOLD, 1, Material.GOLD_INGOT, 1, 1);
+
+                break;
+
+            case NETHERITE_SCRAP:
+
+                SmeltOre(player, Material.ANCIENT_DEBRIS, 1, Material.NETHERITE_SCRAP, 1, 1);
+
+                break;
+
+            case BRICK:
+
+                SmeltOre(player, Material.COBBLESTONE, 5, Material.BRICK, 2, 1);
+
+                break;
+        }
+
+    }
+
+    private void SmeltOre(Player player, Material material,  int materialcost, Material result, int resultamount, int coalcost){
+
+        if (coalcost == 0){
+
+            if (player.getInventory().containsAtLeast(new ItemStack(material), materialcost)){
+
+                player.getInventory().removeItem(new ItemStack(material, materialcost));
+                player.getInventory().removeItem(new ItemStack(Material.COAL, coalcost));
+                player.getInventory().addItem(new ItemStack(result, resultamount));
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+
+            } else {
+
+                player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
+                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+
+            }
+
+        } else {
+
+            if (player.getInventory().containsAtLeast(new ItemStack(material), materialcost) && player.getInventory().containsAtLeast(new ItemStack(Material.COAL), coalcost)){
+
+                player.getInventory().removeItem(new ItemStack(material, materialcost));
+                player.getInventory().removeItem(new ItemStack(Material.COAL, coalcost));
+                player.getInventory().addItem(new ItemStack(result, resultamount));
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
             } else {
@@ -42,6 +96,6 @@ public class FurnaceGUIListener implements Listener {
 
         }
 
-
     }
+
 }

@@ -32,6 +32,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new LogScripCanceller(), this);
         pluginManager.registerEvents(new FurnaceInteract(), this);
         pluginManager.registerEvents(new FurnaceGUIListener(), this);
+        pluginManager.registerEvents(new OreBreak(), this);
 
     }
 
