@@ -46,7 +46,7 @@ public class CraftingGUIListener implements Listener {
 
             case ANVIL:
 
-                if (player.getInventory().containsAtLeast(new ItemStack(Material.BRICK), 10) || player.getInventory().containsAtLeast(new ItemStack(Material.IRON_INGOT), 10)){
+                if (player.getInventory().containsAtLeast(new ItemStack(Material.BRICK), 10) && player.getInventory().containsAtLeast(new ItemStack(Material.IRON_INGOT), 10)){
 
                     player.getInventory().removeItem(new ItemStack(Material.BRICK, 10));
                     player.getInventory().removeItem(new ItemStack(Material.IRON_INGOT, 10));
