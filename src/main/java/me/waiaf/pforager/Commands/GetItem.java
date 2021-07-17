@@ -31,7 +31,7 @@ public class GetItem implements CommandExecutor {
                             if (ItemManager.ItemIDs.containsKey(Integer.parseInt(args[0]))){
 
                                 ItemStack itemStack = ItemManager.ItemIDs.get(Integer.parseInt(args[0]));
-                                player.getInventory().addItem();
+                                player.getInventory().addItem(itemStack);
 
                             } else {
 
