@@ -7,10 +7,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ItemManager{
 
+    public static HashMap<Integer, ItemStack> ItemIDs = new HashMap<>();
     public static ItemStack IronPickaxe;
     public static ItemStack IronShovel;
     public static ItemStack IronAxe;
@@ -37,6 +39,7 @@ public class ItemManager{
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         item.setItemMeta(meta);
         IronPickaxe = item;
+        ItemIDs.put(1, IronPickaxe);
 
     }
 
@@ -54,6 +57,7 @@ public class ItemManager{
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         item.setItemMeta(meta);
         IronShovel = item;
+        ItemIDs.put(2, IronShovel);
 
     }
 
@@ -71,6 +75,8 @@ public class ItemManager{
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         item.setItemMeta(meta);
         IronAxe = item;
+        ItemIDs.put(3, IronAxe);
 
     }
+
 }

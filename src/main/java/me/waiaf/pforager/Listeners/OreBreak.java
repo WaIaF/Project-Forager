@@ -31,39 +31,44 @@ public class OreBreak implements Listener {
 
                 case COAL_ORE:
 
-                    event.setCancelled(true);
-                    event.getBlock().setType(Material.AIR);
-                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
-                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COAL));
-
+                    CancelAndSetAir(event, event.getBlock());
+                    DropWithCobble(new ItemStack(Material.COAL), event.getBlock());
                     RNGBonus(new ItemStack(Material.COAL), event.getBlock());
 
                     break;
 
                 case IRON_ORE:
 
-                    event.setCancelled(true);
-                    event.getBlock().setType(Material.AIR);
-                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
-                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.RAW_IRON));
-
+                    CancelAndSetAir(event, event.getBlock());
+                    DropWithCobble(new ItemStack(Material.RAW_IRON), event.getBlock());
                     RNGBonus(new ItemStack(Material.RAW_IRON), event.getBlock());
 
                     break;
 
                 case GOLD_ORE:
 
-                    event.setCancelled(true);
-                    event.getBlock().setType(Material.AIR);
-                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
-                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.RAW_GOLD));
-
+                    CancelAndSetAir(event, event.getBlock());
+                    DropWithCobble(new ItemStack(Material.RAW_GOLD), event.getBlock());
                     RNGBonus(new ItemStack(Material.RAW_GOLD), event.getBlock());
 
                     break;
             }
 
         }
+    }
+
+    private void CancelAndSetAir(BlockBreakEvent event, Block block){
+
+        event.setCancelled(true);
+        block.setType(Material.AIR);
+
+    }
+
+    private void DropWithCobble(ItemStack itemStack, Block block){
+
+        block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.COBBLESTONE));
+        block.getWorld().dropItemNaturally(block.getLocation(), itemStack);
+
     }
 
     private void RNGBonus(ItemStack itemStack, Block block){

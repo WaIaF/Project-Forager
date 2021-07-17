@@ -29,72 +29,63 @@ public class FurnaceInteract implements Listener {
 
         Inventory inventory = Bukkit.createInventory(player, 45, "Lò nung");
 
-        ItemStack Coal = new ItemStack(Material.COAL, 1);
-        ItemMeta CoalMeta = Coal.getItemMeta();
         List<String> CoalLore = new ArrayList<>();
         CoalLore.add("");
         CoalLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
         CoalLore.add("");
         CoalLore.add(ChatColor.WHITE + "   8x Gỗ sồi");
-        assert CoalMeta != null;
-        CoalMeta.setLore(CoalLore);
-        Coal.setItemMeta(CoalMeta);
 
-        ItemStack Iron = new ItemStack(Material.IRON_INGOT, 1);
-        ItemMeta IronMeta = Iron.getItemMeta();
+        AddItem(inventory, new ItemStack(Material.COAL, 1), CoalLore, 10);
+
         List<String> IronLore = new ArrayList<>();
         IronLore.add("");
         IronLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
         IronLore.add("");
         IronLore.add(ChatColor.WHITE + "   1x Sắt thô");
         IronLore.add(ChatColor.WHITE + "   1x Than");
-        assert IronMeta != null;
-        IronMeta.setLore(IronLore);
-        Iron.setItemMeta(IronMeta);
 
-        ItemStack Gold = new ItemStack(Material.GOLD_INGOT, 1);
-        ItemMeta GoldMeta = Gold.getItemMeta();
+        AddItem(inventory, new ItemStack(Material.IRON_INGOT, 1), IronLore, 11);
+
         List<String> GoldLore = new ArrayList<>();
         GoldLore.add("");
         GoldLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
         GoldLore.add("");
         GoldLore.add(ChatColor.WHITE + "   1x Vàng thô");
         GoldLore.add(ChatColor.WHITE + "   1x Than");
-        assert GoldMeta != null;
-        GoldMeta.setLore(GoldLore);
-        Gold.setItemMeta(GoldMeta);
 
-        ItemStack NetheriteScrap = new ItemStack(Material.NETHERITE_SCRAP, 1);
-        ItemMeta NetheriteScrapMeta = NetheriteScrap.getItemMeta();
+        AddItem(inventory, new ItemStack(Material.GOLD_INGOT, 1), GoldLore, 12);
+
         List<String> NetheriteScrapLore = new ArrayList<>();
         NetheriteScrapLore.add("");
         NetheriteScrapLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
         NetheriteScrapLore.add("");
         NetheriteScrapLore.add(ChatColor.WHITE + "   1x Mảnh vỡ cổ đại");
         NetheriteScrapLore.add(ChatColor.WHITE + "   1x Than");
-        assert NetheriteScrapMeta != null;
-        NetheriteScrapMeta.setLore(NetheriteScrapLore);
-        NetheriteScrap.setItemMeta(NetheriteScrapMeta);
 
-        ItemStack Brick = new ItemStack(Material.BRICK, 2);
-        ItemMeta BrickMeta = Brick.getItemMeta();
+        AddItem(inventory, new ItemStack(Material.NETHERITE_SCRAP, 1), NetheriteScrapLore, 13);
+
         List<String> BrickLore = new ArrayList<>();
         BrickLore.add("");
         BrickLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
         BrickLore.add("");
         BrickLore.add(ChatColor.WHITE + "   5x Đá cuội");
         BrickLore.add(ChatColor.WHITE + "   1x Than");
-        assert BrickMeta != null;
-        BrickMeta.setLore(BrickLore);
-        Brick.setItemMeta(BrickMeta);
 
-        inventory.setItem(10, Coal);
-        inventory.setItem(11, Iron);
-        inventory.setItem(12, Gold);
-        inventory.setItem(13, NetheriteScrap);
-        inventory.setItem(14, Brick);
+        AddItem(inventory, new ItemStack(Material.BRICK, 2), BrickLore, 14);
 
         player.openInventory(inventory);
 
     }
+
+
+    private void AddItem(Inventory inventory, ItemStack itemStack, List<String> Lore, int index){
+
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        assert itemMeta != null;
+        itemMeta.setLore(Lore);
+        itemStack.setItemMeta(itemMeta);
+        inventory.setItem(index, itemStack);
+
+    }
+
 }

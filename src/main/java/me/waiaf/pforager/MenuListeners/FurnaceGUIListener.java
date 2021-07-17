@@ -29,38 +29,38 @@ public class FurnaceGUIListener implements Listener {
 
             case COAL:
 
-                SmeltOre(player, Material.OAK_PLANKS, 8, Material.COAL, 1, 0);
+                Smelt(player, Material.OAK_PLANKS, 8, Material.COAL, 1, 0);
 
                 break;
 
             case IRON_INGOT:
 
-                SmeltOre(player, Material.RAW_IRON, 1, Material.IRON_INGOT, 1, 1);
+                Smelt(player, Material.RAW_IRON, 1, Material.IRON_INGOT, 1, 1);
 
                 break;
 
             case GOLD_INGOT:
 
-                SmeltOre(player, Material.RAW_GOLD, 1, Material.GOLD_INGOT, 1, 1);
+                Smelt(player, Material.RAW_GOLD, 1, Material.GOLD_INGOT, 1, 1);
 
                 break;
 
             case NETHERITE_SCRAP:
 
-                SmeltOre(player, Material.ANCIENT_DEBRIS, 1, Material.NETHERITE_SCRAP, 1, 1);
+                Smelt(player, Material.ANCIENT_DEBRIS, 1, Material.NETHERITE_SCRAP, 1, 1);
 
                 break;
 
             case BRICK:
 
-                SmeltOre(player, Material.COBBLESTONE, 5, Material.BRICK, 2, 1);
+                Smelt(player, Material.COBBLESTONE, 5, Material.BRICK, 2, 1);
 
                 break;
         }
 
     }
 
-    private void SmeltOre(Player player, Material material,  int materialcost, Material result, int resultamount, int coalcost){
+    private void Smelt(Player player, Material material,  int materialcost, Material result, int resultamount, int coalcost){
 
         if (coalcost == 0){
 

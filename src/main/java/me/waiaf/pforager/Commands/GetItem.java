@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class GetItem implements CommandExecutor {
     @Override
@@ -27,39 +28,27 @@ public class GetItem implements CommandExecutor {
 
                         try{
 
-                            switch (Integer.parseInt(args[0])){
+                            if (ItemManager.ItemIDs.containsKey(Integer.parseInt(args[0]))){
 
-                                case 1:
+                                ItemStack itemStack = ItemManager.ItemIDs.get(Integer.parseInt(args[0]));
+                                player.getInventory().addItem();
 
-                                    player.sendMessage(ChatColor.GREEN + "Lấy vật phẩm thành công");
-                                    player.getInventory().addItem(ItemManager.IronPickaxe);
-                                    break;
+                            } else {
 
-                                case 2:
-
-                                    player.sendMessage(ChatColor.GREEN + "Lấy vật phẩm thành công");
-                                    player.getInventory().addItem(ItemManager.IronShovel);
-                                    break;
-
-                                case 3:
-
-                                    player.sendMessage(ChatColor.GREEN + "Lấy vật phẩm thành công");
-                                    player.getInventory().addItem(ItemManager.IronAxe);
-                                    break;
-
-                                default:
-
-                                    player.sendMessage(ChatColor.RED + "ID không tồn tại");
+                                player.sendMessage(ChatColor.RED + "ID không tồn tại");
 
                             }
 
-
                         } catch (NumberFormatException exception){
 
-                            sender.sendMessage(ChatColor.RED + "Vui lòng điền ID hợp lệ");
+                            player.sendMessage(ChatColor.RED + "Vui lòng điền ID hợp lệ");
                             return true;
 
                         }
+
+                    } else {
+
+                        player.sendMessage(ChatColor.WHITE + "Cách dùng lệnh: /getitem <ID vật phẩm>");
 
                     }
 

@@ -29,8 +29,6 @@ public class CraftingTableInteract implements Listener {
 
         Inventory inventory = Bukkit.createInventory(player, 45, "Bàn chế tạo");
 
-        ItemStack Furnace = new ItemStack(Material.FURNACE, 1);
-        ItemMeta FurnaceMeta = Furnace.getItemMeta();
         List<String> FurnaceLore = new ArrayList<>();
         FurnaceLore.add("");
         FurnaceLore.add(ChatColor.GRAY + "Một cái lò nung bình thường");
@@ -38,12 +36,9 @@ public class CraftingTableInteract implements Listener {
         FurnaceLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
         FurnaceLore.add("");
         FurnaceLore.add(ChatColor.WHITE + "   20x Đá cuội");
-        assert FurnaceMeta != null;
-        FurnaceMeta.setLore(FurnaceLore);
-        Furnace.setItemMeta(FurnaceMeta);
 
-        ItemStack Anvil = new ItemStack(Material.ANVIL, 1);
-        ItemMeta AnvilMeta = Anvil.getItemMeta();
+        AddItem(inventory, new ItemStack(Material.FURNACE, 1), FurnaceLore, 10);
+
         List<String> AnvilLore = new ArrayList<>();
         AnvilLore.add("");
         AnvilLore.add(ChatColor.GRAY + "Dùng để chế tạo công cụ");
@@ -53,14 +48,19 @@ public class CraftingTableInteract implements Listener {
         AnvilLore.add(ChatColor.WHITE + "   10x Viên gạch");
         AnvilLore.add(ChatColor.WHITE + "   10x Sắt");
 
-        assert AnvilMeta != null;
-        AnvilMeta.setLore(AnvilLore);
-        Anvil.setItemMeta(AnvilMeta);
-
-        inventory.setItem(10, Furnace);
-        inventory.setItem(11, Anvil);
+        AddItem(inventory, new ItemStack(Material.ANVIL, 1), AnvilLore, 11);
 
         player.openInventory(inventory);
+
+    }
+
+    private void AddItem(Inventory inventory, ItemStack itemStack, List<String> Lore, int index){
+
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        assert itemMeta != null;
+        itemMeta.setLore(Lore);
+        itemStack.setItemMeta(itemMeta);
+        inventory.setItem(index, itemStack);
 
     }
 
