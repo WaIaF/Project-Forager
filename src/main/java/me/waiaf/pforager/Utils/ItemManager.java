@@ -16,12 +16,14 @@ public class ItemManager{
     public static ItemStack IronPickaxe;
     public static ItemStack IronShovel;
     public static ItemStack IronAxe;
+    public static ItemStack FishTrap;
 
     public static void init(){
 
         createIronPickaxe();
         createIronShovel();
         createIronAxe();
+        createFishTrap();
 
     }
 
@@ -79,4 +81,19 @@ public class ItemManager{
 
     }
 
+    private static void createFishTrap(){
+
+        ItemStack item = new ItemStack(Material.BIRCH_TRAPDOOR, 1);
+        ItemMeta meta = item.getItemMeta();
+        assert meta != null;
+        meta.setDisplayName(ChatColor.of("#F5FEFD") + "Bẩy cá");
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add(ChatColor.GRAY + "Dùng để bẩy cá");
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        FishTrap = item;
+        ItemIDs.put(4, FishTrap);
+
+    }
 }

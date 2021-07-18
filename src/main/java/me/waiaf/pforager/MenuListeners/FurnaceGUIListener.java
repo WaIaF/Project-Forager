@@ -60,39 +60,37 @@ public class FurnaceGUIListener implements Listener {
 
     }
 
+    private void SmeltingFailed(Player player){
+
+
+        player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
+        player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+
+    }
+
+    private void SmeltingSuccess(Player player, ItemStack itemStack, int CoalCost){
+
+        if (CoalCost != 0){
+
+            player.getInventory().removeItem(new ItemStack(Material.COAL, CoalCost));
+
+        }
+
+        player.getInventory().addItem(itemStack);
+        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+
+    }
+
     private void Smelt(Player player, Material material,  int materialcost, Material result, int resultamount, int coalcost){
 
-        if (coalcost == 0){
+        if (player.getInventory().containsAtLeast(new ItemStack(material), materialcost)){
 
-            if (player.getInventory().containsAtLeast(new ItemStack(material), materialcost)){
-
-                player.getInventory().removeItem(new ItemStack(material, materialcost));
-                player.getInventory().removeItem(new ItemStack(Material.COAL, coalcost));
-                player.getInventory().addItem(new ItemStack(result, resultamount));
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-
-            } else {
-
-                player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
-                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
-
-            }
+            player.getInventory().removeItem(new ItemStack(material, materialcost));
+            SmeltingSuccess(player, new ItemStack(result, resultamount), coalcost);
 
         } else {
 
-            if (player.getInventory().containsAtLeast(new ItemStack(material), materialcost) && player.getInventory().containsAtLeast(new ItemStack(Material.COAL), coalcost)){
-
-                player.getInventory().removeItem(new ItemStack(material, materialcost));
-                player.getInventory().removeItem(new ItemStack(Material.COAL, coalcost));
-                player.getInventory().addItem(new ItemStack(result, resultamount));
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-
-            } else {
-
-                player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
-                player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
-
-            }
+            SmeltingFailed(player);
 
         }
 

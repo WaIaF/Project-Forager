@@ -1,5 +1,7 @@
 package me.waiaf.pforager.MenuListeners;
 
+import me.waiaf.pforager.Utils.ItemManager;
+import me.waiaf.pforager.Utils.MenuManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -14,7 +16,7 @@ public class CraftingGUIListener implements Listener {
     @EventHandler
     public void CraftingGUIInteractEvent(InventoryClickEvent event){
 
-        if (!event.getView().getTitle().equalsIgnoreCase("Bàn chế tạo")) return;
+        if (!event.getView().getTitle().contains("Bàn chế tạo")) return;
 
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
@@ -25,44 +27,111 @@ public class CraftingGUIListener implements Listener {
 
         Material clickedItemMaterial = clickedItem.getType();
 
-        switch (clickedItemMaterial){
+        switch (event.getView().getTitle()){
 
-            case FURNACE:
+            case "Bàn chế tạo | Hãy chọn danh mục":
 
-                if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
+                switch (clickedItemMaterial){
 
-                    player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
-                    player.getInventory().addItem(new ItemStack(Material.FURNACE, 1));
-                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                    case FURNACE:
 
-                } else {
+                        player.openInventory(MenuManager.CraftGUIMachines);
+                        break;
 
-                    player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+                    case BIRCH_TRAPDOOR:
+
+                        player.openInventory(MenuManager.CraftGUITools);
+                        break;
+                }
+
+                break;
+
+            case "Bàn chế tạo | Máy móc":
+
+                switch (clickedItemMaterial){
+
+                    case FURNACE:
+
+                        if (player.getInventory().containsAtLeast(new ItemStack(Material.COBBLESTONE), 20)){
+
+                            player.getInventory().removeItem(new ItemStack(Material.COBBLESTONE, 20));
+                            craftingSuccess(player, new ItemStack(Material.FURNACE, 1));
+
+                        } else {
+
+                            craftingFailed(player);
+
+                        }
+
+                        break;
+
+                    case ANVIL:
+
+                        if (player.getInventory().containsAtLeast(new ItemStack(Material.BRICK), 10) && player.getInventory().containsAtLeast(new ItemStack(Material.IRON_INGOT), 10)){
+
+                            player.getInventory().removeItem(new ItemStack(Material.BRICK, 10));
+                            player.getInventory().removeItem(new ItemStack(Material.IRON_INGOT, 10));
+                            craftingSuccess(player, new ItemStack(Material.ANVIL, 1));
+
+                        } else {
+
+                            craftingFailed(player);
+
+                        }
+
+                        break;
+
+                    case FEATHER:
+
+                        player.openInventory(MenuManager.CraftGUIMain);
+                        break;
 
                 }
 
                 break;
 
-            case ANVIL:
+            case "Bàn chế tạo | Công cụ":
 
-                if (player.getInventory().containsAtLeast(new ItemStack(Material.BRICK), 10) && player.getInventory().containsAtLeast(new ItemStack(Material.IRON_INGOT), 10)){
+                switch (clickedItemMaterial){
 
-                    player.getInventory().removeItem(new ItemStack(Material.BRICK, 10));
-                    player.getInventory().removeItem(new ItemStack(Material.IRON_INGOT, 10));
-                    player.getInventory().addItem(new ItemStack(Material.ANVIL, 1));
-                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                    case BIRCH_TRAPDOOR:
 
-                } else {
+                        if (player.getInventory().containsAtLeast(new ItemStack(Material.OAK_PLANKS), 10) && player.getInventory().containsAtLeast(new ItemStack(Material.SWEET_BERRIES), 5)){
 
-                    player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+                            player.getInventory().removeItem(new ItemStack(Material.OAK_PLANKS, 10));
+                            player.getInventory().removeItem(new ItemStack(Material.SWEET_BERRIES, 5));
+                            craftingSuccess(player, ItemManager.FishTrap);
+
+                        } else {
+
+                            craftingFailed(player);
+
+                        }
+
+                        break;
+
+                    case FEATHER:
+
+                        player.openInventory(MenuManager.CraftGUIMain);
+                        break;
 
                 }
 
                 break;
-
         }
+    }
+
+    private void craftingFailed(Player player){
+
+        player.sendMessage(ChatColor.RED + "Bạn không có đủ nguyên liệu để chế tạo vật phẩm này");
+        player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
+
+    }
+
+    private void craftingSuccess(Player player, ItemStack itemStack){
+
+        player.getInventory().addItem(itemStack);
+        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
     }
 }

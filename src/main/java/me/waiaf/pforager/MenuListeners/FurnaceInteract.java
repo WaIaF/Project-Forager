@@ -1,4 +1,4 @@
-package me.waiaf.pforager.Listeners;
+package me.waiaf.pforager.MenuListeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

@@ -3,7 +3,10 @@ package me.waiaf.pforager;
 import me.waiaf.pforager.Commands.GetItem;
 import me.waiaf.pforager.Listeners.*;
 import me.waiaf.pforager.MenuListeners.CraftingGUIListener;
+import me.waiaf.pforager.MenuListeners.CraftingTableInteract;
 import me.waiaf.pforager.MenuListeners.FurnaceGUIListener;
+import me.waiaf.pforager.MenuListeners.FurnaceInteract;
+import me.waiaf.pforager.Utils.MenuManager;
 import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +19,7 @@ public final class Main extends JavaPlugin {
     public void onEnable(){
 
         ItemManager.init();
+        MenuManager.init();
         registerEvents();
         setExecutors();
 
