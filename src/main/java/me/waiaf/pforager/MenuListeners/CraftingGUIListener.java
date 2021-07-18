@@ -60,6 +60,8 @@ public class CraftingGUIListener implements Listener {
 
                 }
 
+                break;
+
         }
 
     }
