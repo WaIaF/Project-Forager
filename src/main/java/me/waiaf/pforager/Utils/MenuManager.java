@@ -61,7 +61,7 @@ public class MenuManager {
         FishTrapLore.add(ChatColor.WHITE + "   5x Quả mọng");
 
         AddItem(CraftGUITools, FishTrap, FishTrapLore, 10);
-        AddReturnFeather(CraftGUITools, 40);
+        AddReturnFeather(CraftGUITools);
 
     }
 
@@ -89,7 +89,7 @@ public class MenuManager {
         AnvilLore.add(ChatColor.WHITE + "   10x Sắt");
 
         AddItem(CraftGUIMachines, new ItemStack(Material.ANVIL, 1), AnvilLore, 11);
-        AddReturnFeather(CraftGUIMachines, 44);
+        AddReturnFeather(CraftGUIMachines);
 
     }
 
@@ -151,7 +151,7 @@ public class MenuManager {
         AddItem(FurnaceGUIMaterial, new ItemStack(Material.BRICK, 2), BrickLore, 14);
 
 
-        AddReturnFeather(FurnaceGUIMaterial, 44);
+        AddReturnFeather(FurnaceGUIMaterial);
 
     }
 
@@ -176,7 +176,7 @@ public class MenuManager {
 
         AddItem(FurnaceGUIDitto, new ItemStack(Material.IRON_INGOT, 1), IronLore, 11);
 
-        AddReturnFeather(FurnaceGUIDitto, 44);
+        AddReturnFeather(FurnaceGUIDitto);
 
     }
 
@@ -205,14 +205,14 @@ public class MenuManager {
 
     }
 
-    private static void AddReturnFeather(Inventory inventory, int index){
+    private static void AddReturnFeather(Inventory inventory){
 
         ItemStack itemStack = new ItemStack(Material.FEATHER, 1);
         ItemMeta itemMeta = itemStack.getItemMeta();
         assert  itemMeta != null;
         itemMeta.setDisplayName(ChatColor.WHITE + "Quay về");
         itemStack.setItemMeta(itemMeta);
-        inventory.setItem(index, itemStack);
+        inventory.setItem(40, itemStack);
 
     }
 }

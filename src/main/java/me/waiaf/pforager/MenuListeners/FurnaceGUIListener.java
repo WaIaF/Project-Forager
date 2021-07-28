@@ -78,6 +78,12 @@ public class FurnaceGUIListener implements Listener {
                         Smelt(player, Material.COBBLESTONE, 5, Material.BRICK, 2, 1);
 
                         break;
+
+                    case FEATHER:
+
+                        player.openInventory(MenuManager.CraftGUIMain);
+                        break;
+
                 }
 
                 break;
@@ -96,6 +102,11 @@ public class FurnaceGUIListener implements Listener {
 
                         Smelt(player, Material.RAW_IRON, 1, Material.IRON_INGOT, 2, 1);
 
+                        break;
+
+                    case FEATHER:
+
+                        player.openInventory(MenuManager.CraftGUIMain);
                         break;
 
                 }
