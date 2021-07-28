@@ -98,7 +98,7 @@ public class MenuManager {
         FurnaceGUIMain = Bukkit.createInventory(null, 27, "Lò nung | Hãy chọn danh mục");
 
         AddCategory(FurnaceGUIMain, new ItemStack(Material.IRON_INGOT, 1), ChatColor.WHITE + "Vật liệu",10);
-        AddCategory(FurnaceGUIMain, new ItemStack(Material.BEDROCK, 1), ChatColor.WHITE + "Ditto",10);
+        AddCategory(FurnaceGUIMain, new ItemStack(Material.BEDROCK, 1), ChatColor.WHITE + "Ditto",11);
 
     }
 
