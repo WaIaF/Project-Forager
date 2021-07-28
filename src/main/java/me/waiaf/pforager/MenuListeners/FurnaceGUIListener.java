@@ -1,5 +1,6 @@
 package me.waiaf.pforager.MenuListeners;
 
+import me.waiaf.pforager.Utils.MenuManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -25,37 +26,81 @@ public class FurnaceGUIListener implements Listener {
 
         Material clickedItemMaterial = clickedItem.getType();
 
-        switch (clickedItemMaterial){
+        switch (event.getView().getTitle()){
 
-            case COAL:
+            case "Lò nung | Hãy chọn danh mục":
 
-                Smelt(player, Material.OAK_PLANKS, 8, Material.COAL, 1, 0);
+                switch (clickedItemMaterial){
 
-                break;
+                    case IRON_INGOT:
 
-            case IRON_INGOT:
+                        player.openInventory(MenuManager.FurnaceGUIMaterial);
+                        break;
 
-                Smelt(player, Material.RAW_IRON, 1, Material.IRON_INGOT, 1, 1);
+                    case BEDROCK:
 
-                break;
-
-            case GOLD_INGOT:
-
-                Smelt(player, Material.RAW_GOLD, 1, Material.GOLD_INGOT, 1, 1);
-
-                break;
-
-            case NETHERITE_SCRAP:
-
-                Smelt(player, Material.ANCIENT_DEBRIS, 1, Material.NETHERITE_SCRAP, 1, 1);
+                        player.openInventory(MenuManager.FurnaceGUIDitto);
+                        break;
+                }
 
                 break;
 
-            case BRICK:
+            case "Lò nung | Vật liệu":
 
-                Smelt(player, Material.COBBLESTONE, 5, Material.BRICK, 2, 1);
+                switch (clickedItemMaterial){
+
+                    case COAL:
+
+                        Smelt(player, Material.OAK_PLANKS, 8, Material.COAL, 1, 0);
+
+                        break;
+
+                    case IRON_INGOT:
+
+                        Smelt(player, Material.RAW_IRON, 1, Material.IRON_INGOT, 1, 1);
+
+                        break;
+
+                    case GOLD_INGOT:
+
+                        Smelt(player, Material.RAW_GOLD, 1, Material.GOLD_INGOT, 1, 1);
+
+                        break;
+
+                    case NETHERITE_SCRAP:
+
+                        Smelt(player, Material.ANCIENT_DEBRIS, 1, Material.NETHERITE_SCRAP, 1, 1);
+
+                        break;
+
+                    case BRICK:
+
+                        Smelt(player, Material.COBBLESTONE, 5, Material.BRICK, 2, 1);
+
+                        break;
+                }
 
                 break;
+
+            case "Lò nung | Ditto":
+
+                switch (clickedItemMaterial){
+
+                    case COAL:
+
+                        Smelt(player, Material.OAK_PLANKS, 4, Material.COAL, 1, 0);
+
+                        break;
+
+                    case IRON_INGOT:
+
+                        Smelt(player, Material.RAW_IRON, 1, Material.IRON_INGOT, 2, 1);
+
+                        break;
+
+                }
+
+            break;
         }
 
     }

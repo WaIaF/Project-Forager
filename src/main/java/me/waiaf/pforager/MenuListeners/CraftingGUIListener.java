@@ -46,7 +46,7 @@ public class CraftingGUIListener implements Listener {
 
                 break;
 
-            case "Bàn chế tạo | Máy móc":
+            case "Bàn chế tạo | Xây dựng":
 
                 switch (clickedItemMaterial){
 

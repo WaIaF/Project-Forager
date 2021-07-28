@@ -16,11 +16,20 @@ public class MenuManager {
     public static Inventory CraftGUIMachines;
     public static Inventory CraftGUITools;
 
+    public static Inventory FurnaceGUIMain;
+    public static Inventory FurnaceGUIMaterial;
+    public static Inventory FurnaceGUIDitto;
+
+
     public static void init(){
 
         createCraftGUIMain();
         createCraftGUIMachines();
         createCraftGUITools();
+
+        createFurnaceGUIMain();
+        createFurnaceGUIMaterials();
+        createFurnaceGUIDitto();
 
     }
 
@@ -58,7 +67,7 @@ public class MenuManager {
 
     private static void createCraftGUIMachines(){
 
-        CraftGUIMachines = Bukkit.createInventory(null, 45, "Bàn chế tạo | Máy móc");
+        CraftGUIMachines = Bukkit.createInventory(null, 45, "Bàn chế tạo | Xây dựng");
 
         List<String> FurnaceLore = new ArrayList<>();
         FurnaceLore.add("");
@@ -83,6 +92,98 @@ public class MenuManager {
         AddReturnFeather(CraftGUIMachines, 44);
 
     }
+
+    private static void createFurnaceGUIMain(){
+
+        FurnaceGUIMain = Bukkit.createInventory(null, 27, "Lò nung | Hãy chọn danh mục");
+
+        AddCategory(FurnaceGUIMain, new ItemStack(Material.IRON_INGOT, 1), ChatColor.WHITE + "Vật liệu",10);
+        AddCategory(FurnaceGUIMain, new ItemStack(Material.BEDROCK, 1), ChatColor.WHITE + "Ditto",10);
+
+    }
+
+    private static void createFurnaceGUIMaterials(){
+
+        FurnaceGUIMaterial = Bukkit.createInventory(null, 45, "Lò nung | Vật liệu");
+
+        List<String> CoalLore = new ArrayList<>();
+        CoalLore.add("");
+        CoalLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        CoalLore.add("");
+        CoalLore.add(ChatColor.WHITE + "   8x Gỗ sồi");
+
+        AddItem(FurnaceGUIMaterial, new ItemStack(Material.COAL, 1), CoalLore, 10);
+
+        List<String> IronLore = new ArrayList<>();
+        IronLore.add("");
+        IronLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        IronLore.add("");
+        IronLore.add(ChatColor.WHITE + "   1x Sắt thô");
+        IronLore.add(ChatColor.WHITE + "   1x Than");
+
+        AddItem(FurnaceGUIMaterial, new ItemStack(Material.IRON_INGOT, 1), IronLore, 11);
+
+        List<String> GoldLore = new ArrayList<>();
+        GoldLore.add("");
+        GoldLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        GoldLore.add("");
+        GoldLore.add(ChatColor.WHITE + "   1x Vàng thô");
+        GoldLore.add(ChatColor.WHITE + "   1x Than");
+
+        AddItem(FurnaceGUIMaterial, new ItemStack(Material.GOLD_INGOT, 1), GoldLore, 12);
+
+        List<String> NetheriteScrapLore = new ArrayList<>();
+        NetheriteScrapLore.add("");
+        NetheriteScrapLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        NetheriteScrapLore.add("");
+        NetheriteScrapLore.add(ChatColor.WHITE + "   1x Mảnh vỡ cổ đại");
+        NetheriteScrapLore.add(ChatColor.WHITE + "   1x Than");
+
+        AddItem(FurnaceGUIMaterial, new ItemStack(Material.NETHERITE_SCRAP, 1), NetheriteScrapLore, 13);
+
+        List<String> BrickLore = new ArrayList<>();
+        BrickLore.add("");
+        BrickLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        BrickLore.add("");
+        BrickLore.add(ChatColor.WHITE + "   5x Đá cuội");
+        BrickLore.add(ChatColor.WHITE + "   1x Than");
+
+        AddItem(FurnaceGUIMaterial, new ItemStack(Material.BRICK, 2), BrickLore, 14);
+
+
+        AddReturnFeather(FurnaceGUIMaterial, 44);
+
+    }
+
+    private static void createFurnaceGUIDitto(){
+
+        FurnaceGUIDitto = Bukkit.createInventory(null, 45, "Lò nung | Ditto");
+
+        List<String> CoalLore = new ArrayList<>();
+        CoalLore.add("");
+        CoalLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        CoalLore.add("");
+        CoalLore.add(ChatColor.WHITE + "   8x Gỗ sồi");
+
+        AddItem(FurnaceGUIDitto, new ItemStack(Material.COAL, 1), CoalLore, 10);
+
+        List<String> IronLore = new ArrayList<>();
+        IronLore.add("");
+        IronLore.add(ChatColor.GREEN + "Vật liệu cần để chế tạo:");
+        IronLore.add("");
+        IronLore.add(ChatColor.WHITE + "   1x Sắt thô");
+        IronLore.add(ChatColor.WHITE + "   1x Than");
+
+        AddItem(FurnaceGUIDitto, new ItemStack(Material.IRON_INGOT, 1), IronLore, 11);
+
+        AddReturnFeather(FurnaceGUIDitto, 44);
+
+    }
+
+
+
+    // Functions
+
 
     private static void AddCategory(Inventory inventory, ItemStack itemStack, String name, int index){
 
