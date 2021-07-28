@@ -15,7 +15,7 @@ public class FurnaceGUIListener implements Listener {
     @EventHandler
     public void FurnaceGUIInteractEvent(InventoryClickEvent event){
 
-        if (!event.getView().getTitle().equalsIgnoreCase("Lò nung")) return;
+        if (!event.getView().getTitle().contains("Lò nung")) return;
 
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
