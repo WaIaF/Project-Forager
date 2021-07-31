@@ -20,6 +20,8 @@ public class MenuManager {
     public static Inventory FurnaceGUIMaterial;
     public static Inventory FurnaceGUIDitto;
 
+    public static Inventory AnvilGUIMain;
+
 
     public static void init(){
 
@@ -31,7 +33,11 @@ public class MenuManager {
         createFurnaceGUIMaterials();
         createFurnaceGUIDitto();
 
+        createAnvilGUIMain();
+
     }
+
+    // Crafting Table
 
     private static void createCraftGUIMain(){
 
@@ -92,6 +98,8 @@ public class MenuManager {
         AddReturnFeather(CraftGUIMachines);
 
     }
+
+    // Furnace
 
     private static void createFurnaceGUIMain(){
 
@@ -177,6 +185,14 @@ public class MenuManager {
         AddItem(FurnaceGUIDitto, new ItemStack(Material.IRON_INGOT, 1), IronLore, 11);
 
         AddReturnFeather(FurnaceGUIDitto);
+
+    }
+
+    // Anvil
+
+    private static void createAnvilGUIMain(){
+
+        AnvilGUIMain = Bukkit.createInventory(null, 27, "Cái đe | Hãy chọn danh mục");
 
     }
 

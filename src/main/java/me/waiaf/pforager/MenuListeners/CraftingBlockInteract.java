@@ -7,19 +7,40 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-public class CraftingTableInteract implements Listener {
+
+public class CraftingBlockInteract implements Listener {
 
     @EventHandler
-    public void CraftingTableInteractEvent(PlayerInteractEvent event){
+    public void CraftingBlockInteractEvent(PlayerInteractEvent event){
 
         if (event.getClickedBlock() == null) return;
+
         if (!event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE)) return;
+        if (!event.getClickedBlock().getType().equals(Material.FURNACE)) return;
+
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 
         Player player = event.getPlayer();
+
         event.setCancelled(true);
 
-        player.openInventory(MenuManager.CraftGUIMain);
+        switch (event.getClickedBlock().getType()){
 
+            case CRAFTING_TABLE:
+
+                player.openInventory(MenuManager.CraftGUIMain);
+                break;
+
+            case FURNACE:
+
+                player.openInventory(MenuManager.FurnaceGUIMain);
+                break;
+
+            case ANVIL:
+
+                player.openInventory(MenuManager.AnvilGUIMain);
+                break;
+        }
     }
+
 }
