@@ -32,13 +32,14 @@ public class FishTrapPlace implements Listener {
         plugin.CustomBlocks.put(event.getBlock().getLocation(), "FishTrap");
         plugin.FishTrapCaughtStatus.put(event.getBlock().getLocation(), false);
         ArmorStand hologram = (ArmorStand) event.getBlock().getWorld().spawnEntity(event.getBlock().getLocation(), EntityType.ARMOR_STAND);
+        plugin.FishTrapHolograms.put(event.getBlock().getLocation(), hologram);
         hologram.setVisible(false);
         hologram.setCustomNameVisible(false);
-        UpdateFishTrapPeriodically(event.getBlock(), hologram);
+        StartFishTrap(event.getBlock(), hologram);
 
     }
 
-    private void UpdateFishTrapPeriodically(Block block, ArmorStand hologram){
+    private void StartFishTrap(Block block, ArmorStand hologram){
 
         new BukkitRunnable(){
 
@@ -62,7 +63,7 @@ public class FishTrapPlace implements Listener {
 
             }
 
-        }.runTaskTimer(Main.getPlugin(Main.class), 20*20, 20*20);
+        }.runTaskLater(Main.getPlugin(Main.class), 20*20);
 
     }
 }

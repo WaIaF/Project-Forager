@@ -10,6 +10,7 @@ import me.waiaf.pforager.MenuListeners.FurnaceGUIListener;
 import me.waiaf.pforager.Utils.MenuManager;
 import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.Location;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,7 +19,9 @@ import java.util.HashMap;
 public final class Main extends JavaPlugin {
 
     public HashMap<Location, String> CustomBlocks = new HashMap<>();
+
     public HashMap<Location, Boolean> FishTrapCaughtStatus = new HashMap<>();
+    public HashMap<Location, ArmorStand> FishTrapHolograms = new HashMap<>();
 
     PluginManager pluginManager = this.getServer().getPluginManager();
 
