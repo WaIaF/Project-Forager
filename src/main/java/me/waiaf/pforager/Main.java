@@ -40,17 +40,12 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable(){
 
-        CustomBlocks.clear();
-        FishTrapCaughtStatus.clear();
-
         for (Map.Entry<Location, ArmorStand> entry : FishTrapHolograms.entrySet()){
 
             ArmorStand armorStand = entry.getValue();
             armorStand.remove();
 
         }
-
-        FishTrapHolograms.clear();
 
     }
 
