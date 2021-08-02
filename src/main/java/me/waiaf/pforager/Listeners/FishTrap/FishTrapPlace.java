@@ -35,7 +35,7 @@ public class FishTrapPlace implements Listener {
                 player.sendMessage("Debug: Block replaced is water");
                 event.setCancelled(true);
                 event.getBlock().setType(Material.BIRCH_TRAPDOOR);
-                TrapDoor FishTrap = (TrapDoor) event.getBlock();
+                TrapDoor FishTrap = (TrapDoor) event.getBlock().getBlockData();
                 FishTrap.setWaterlogged(true);
                 player.sendMessage("Debug: Fish trap placed");
 
