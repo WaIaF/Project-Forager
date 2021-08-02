@@ -33,18 +33,16 @@ public class FishTrapPlace implements Listener {
             if (event.getBlockReplacedState().getType().equals(Material.WATER)){
 
                 player.sendMessage("Debug: Block replaced is water");
-                event.setCancelled(true);
-                event.getBlock().setType(Material.BIRCH_TRAPDOOR);
                 TrapDoor FishTrap = (TrapDoor) event.getBlock().getBlockData();
                 FishTrap.setWaterlogged(true);
                 player.sendMessage("Debug: Fish trap placed");
 
                 plugin.CustomBlocks.put(event.getBlock().getLocation(), "FishTrap");
                 plugin.FishTrapCaughtStatus.put(event.getBlock().getLocation(), false);
-                ArmorStand hologram = (ArmorStand) event.getBlock().getWorld().spawnEntity(event.getBlock().getLocation(), EntityType.ARMOR_STAND);
-                plugin.FishTrapHolograms.put(event.getBlock().getLocation(), hologram);
+                ArmorStand hologram = (ArmorStand) event.getBlock().getWorld().spawnEntity(event.getBlock().getLocation().add(0.5D, 0, 0.5D), EntityType.ARMOR_STAND);
                 hologram.setVisible(false);
                 hologram.setCustomNameVisible(false);
+                plugin.FishTrapHolograms.put(event.getBlock().getLocation(), hologram);
                 StartFishTrap(event.getBlock(), hologram, event.getPlayer());
 
             }
@@ -60,22 +58,27 @@ public class FishTrapPlace implements Listener {
             public void run(){
 
 
-                if (!plugin.CustomBlocks.containsKey(block.getLocation())) return;
-                if (!plugin.CustomBlocks.get(block.getLocation()).equals("FishTrap")) return;
-                if (!plugin.FishTrapCaughtStatus.get(block.getLocation()).equals(true)) return;
-                if (!block.getType().equals(Material.BIRCH_TRAPDOOR)){
+                if (plugin.CustomBlocks.containsKey(block.getLocation())){
 
-                    this.cancel();
-                    return;
+                    if (plugin.CustomBlocks.get(block.getLocation()).equals("FishTrap")){
 
+                        if (plugin.FishTrapCaughtStatus.get(block.getLocation()).equals(false)){
+
+                            if (!block.getType().equals(Material.BIRCH_TRAPDOOR)){
+
+                                this.cancel();
+                                return;
+
+                            }
+
+                            plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
+                            hologram.setCustomNameVisible(true);
+                            hologram.setCustomName(ChatColor.GREEN + "!!!");
+                            debugPlayer.sendMessage("Debug: Fish trap usuable");
+
+                        }
+                    }
                 }
-
-                plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
-                hologram.setCustomNameVisible(true);
-                hologram.setCustomName(ChatColor.GREEN + "" + ChatColor.BOLD + "!!!");
-                debugPlayer.sendMessage("Debug: Fish trap usuable");
-
-
             }
 
         }.runTaskLater(Main.getPlugin(Main.class), 20*20);

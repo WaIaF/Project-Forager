@@ -97,21 +97,27 @@ public class FishTrapInteract implements Listener {
             @Override
             public void run(){
 
-                if (!plugin.CustomBlocks.containsKey(block.getLocation())) return;
-                if (!plugin.CustomBlocks.get(block.getLocation()).equals("FishTrap")) return;
-                if (!plugin.FishTrapCaughtStatus.get(block.getLocation()).equals(true)) return;
-                if (!block.getType().equals(Material.BIRCH_TRAPDOOR)){
+                if (plugin.CustomBlocks.containsKey(block.getLocation())){
 
-                    this.cancel();
-                    return;
+                    if (plugin.CustomBlocks.get(block.getLocation()).equals("FishTrap")){
 
+                        if (plugin.FishTrapCaughtStatus.get(block.getLocation()).equals(false)){
+
+                            if (!block.getType().equals(Material.BIRCH_TRAPDOOR)){
+
+                                this.cancel();
+                                return;
+
+                            }
+
+                            plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
+                            hologram.setCustomNameVisible(true);
+                            hologram.setCustomName(ChatColor.GREEN + "!!!");
+
+
+                        }
+                    }
                 }
-
-                plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
-                hologram.setCustomNameVisible(true);
-                hologram.setCustomName(ChatColor.GREEN + "" + ChatColor.BOLD + "!!!");
-
-
             }
 
         }.runTaskLater(Main.getPlugin(Main.class), 20*20);
