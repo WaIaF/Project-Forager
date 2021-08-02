@@ -1,15 +1,15 @@
 package me.waiaf.pforager.Listeners;
 
 import me.waiaf.pforager.Main;
-import net.md_5.bungee.api.ChatColor;
+import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
@@ -19,54 +19,45 @@ public class DigGrass implements Listener {
     @EventHandler
     public void DigGrassEvent(PlayerInteractEvent event){
 
-        if (event.getClickedBlock() == null) return;
         Block block = event.getClickedBlock();
-        assert block != null;
+        if (block == null) return;
         Material material = block.getType();
         if (!material.equals(Material.GRASS_BLOCK)) return;
+        if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
+
         ItemStack itemStack = event.getPlayer().getInventory().getItemInMainHand();
-        if (itemStack.hasItemMeta()){
 
-            ItemMeta itemMeta = itemStack.getItemMeta();
-            assert itemMeta != null;
-            String itemName = itemMeta.getDisplayName();
+        if (itemStack.isSimilar(ItemManager.IronShovel)){
 
-            if (itemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Xẻng sắt")){
+            Location location = block.getLocation();
+            location.setY(location.getBlockY() + 0.6575);
+            Random random = new Random();
+            int rng = random.nextInt(100) + 1;
 
-                Location location = block.getLocation();
-                location.setY(location.getBlockY() + 0.6575);
-                Random random = new Random();
-                int rng = random.nextInt(100) + 1;
+            /*
+             *   Iron Shovel Chances:
+             *       95% Nothing
+             *       4% Sand
+             *       1% Iron Ore
+             */
 
-                /*
-                 *   Iron Shovel Chances:
-                 *       95% Nothing
-                 *       4% Sand
-                 *       1% Iron Ore
-                 */
+            if (rng >= 96){
 
-                if (rng >= 96){
+                if (rng <= 99){
 
-                    if (rng <= 99){
+                    block.getWorld().dropItemNaturally(location, new ItemStack(Material.SAND, 1));
 
-                        block.getWorld().dropItemNaturally(location, new ItemStack(Material.SAND, 1));
+                } else {
 
-                    } else {
-
-                        block.getWorld().dropItemNaturally(location, new ItemStack(Material.IRON_ORE, 1));
-
-                    }
+                    block.getWorld().dropItemNaturally(location, new ItemStack(Material.IRON_ORE, 1));
 
                 }
 
             }
 
-
-
+            TurnPathBackToDirt(block);
 
         }
-
-        TurnPathBackToDirt(block);
 
     }
 

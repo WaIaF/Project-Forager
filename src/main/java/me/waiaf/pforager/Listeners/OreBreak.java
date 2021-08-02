@@ -1,5 +1,6 @@
 package me.waiaf.pforager.Listeners;
 
+import me.waiaf.pforager.Utils.ItemManager;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -19,14 +20,10 @@ public class OreBreak implements Listener {
 
         Player player = event.getPlayer();
         ItemStack itemStack = player.getInventory().getItemInMainHand();
-        if (!itemStack.hasItemMeta()) return;
-        ItemMeta meta = itemStack.getItemMeta();
-        assert meta != null;
-        String ItemName = meta.getDisplayName();
         Random random = new Random();
         int rng = random.nextInt(100) + 1;
 
-        if (ItemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Cúp sắt")){
+        if (itemStack.isSimilar(ItemManager.IronPickaxe)){
 
             switch (event.getBlock().getType()){
 

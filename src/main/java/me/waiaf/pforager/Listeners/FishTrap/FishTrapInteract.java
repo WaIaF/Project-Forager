@@ -29,31 +29,22 @@ public class FishTrapInteract implements Listener {
         Block block = event.getClickedBlock();
 
         if (block == null) return;
-        player.sendMessage("Debug: Block is not null");
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
-        player.sendMessage("Debug: Right clicked block");
         if (block.getType().equals(Material.BIRCH_TRAPDOOR)){
-
-            player.sendMessage("Debug: Block is a trapdoor");
 
             if (plugin.CustomBlocks.containsKey(block.getLocation())){
 
-                player.sendMessage("Debug: Contains key");
-
-                if (plugin.CustomBlocks.get(event.getClickedBlock().getLocation()).equalsIgnoreCase("FishTrap")){
-
-                    player.sendMessage("Debug: Is A Fish Trap");
+                if (plugin.CustomBlocks.get(block.getLocation()).equalsIgnoreCase("FishTrap")){
 
                     event.setCancelled(true);
 
-                    if (plugin.FishTrapCaughtStatus.get(event.getClickedBlock().getLocation())){
+                    if (plugin.FishTrapCaughtStatus.get(block.getLocation())){
 
-                        player.sendMessage("Is Done");
-                        ArmorStand hologram = plugin.FishTrapHolograms.get(event.getClickedBlock().getLocation());
+                        ArmorStand hologram = plugin.FishTrapHolograms.get(block.getLocation());
                         hologram.setCustomNameVisible(false);
                         plugin.FishTrapCaughtStatus.put(block.getLocation(), false);
                         RNGJesus(player);
-                        StartFishTrap(block, hologram, player);
+                        StartFishTrap(block, hologram);
 
                     }
 
@@ -91,7 +82,7 @@ public class FishTrapInteract implements Listener {
 
     }
 
-    private void StartFishTrap(Block block, ArmorStand hologram, Player debugPlayer){
+    private void StartFishTrap(Block block, ArmorStand hologram){
 
         new BukkitRunnable(){
 
@@ -113,9 +104,7 @@ public class FishTrapInteract implements Listener {
 
                             plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
                             hologram.setCustomNameVisible(true);
-                            hologram.setCustomName(ChatColor.GREEN + "!!!");
-                            debugPlayer.sendMessage("Debug: Fish trap usuable");
-
+                            hologram.setCustomName(ChatColor.YELLOW + "" + ChatColor.BOLD + "!!!");
 
                         }
                     }

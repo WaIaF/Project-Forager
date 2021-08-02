@@ -1,6 +1,6 @@
 package me.waiaf.pforager.Listeners;
 
-import net.md_5.bungee.api.ChatColor;
+import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -8,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Random;
 
@@ -19,75 +18,78 @@ public class WoodBreak implements Listener {
 
         Player player = event.getPlayer();
         ItemStack itemStack = player.getInventory().getItemInMainHand();
-        if (itemStack.hasItemMeta()){
+        if (itemStack.isSimilar(ItemManager.IronAxe)){
 
-            ItemMeta itemMeta = itemStack.getItemMeta();
-            assert itemMeta != null;
-            String itemName = itemMeta.getDisplayName();
+            Random random = new Random();
+            int rng = random.nextInt(100) + 1;
 
-            if (itemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Rìu sắt")){
+            switch (event.getBlock().getType()){
 
-                Random random = new Random();
-                int rng = random.nextInt(100) + 1;
+                case ACACIA_LOG:
 
-                switch (event.getBlock().getType()){
+                    event.setCancelled(true);
+                    event.getBlock().setType(Material.AIR);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS));
+                    RNGBonus(new ItemStack(Material.ACACIA_PLANKS), event.getBlock());
 
-                    case ACACIA_LOG:
+                    break;
 
-                        event.setCancelled(true);
-                        event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.ACACIA_PLANKS, 3));
-                        RNGBonus(new ItemStack(Material.ACACIA_PLANKS), event.getBlock());
+                case BIRCH_LOG:
 
-                        break;
+                    event.setCancelled(true);
+                    event.getBlock().setType(Material.AIR);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS));
+                    RNGBonus(new ItemStack(Material.BIRCH_PLANKS), event.getBlock());
 
-                    case BIRCH_LOG:
+                    break;
 
-                        event.setCancelled(true);
-                        event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BIRCH_PLANKS, 3));
-                        RNGBonus(new ItemStack(Material.BIRCH_PLANKS), event.getBlock());
+                case DARK_OAK_LOG:
 
-                        break;
+                    event.setCancelled(true);
+                    event.getBlock().setType(Material.AIR);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS));
+                    RNGBonus(new ItemStack(Material.DARK_OAK_PLANKS), event.getBlock());
 
-                    case DARK_OAK_LOG:
+                    break;
 
-                        event.setCancelled(true);
-                        event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.DARK_OAK_PLANKS, 3));
-                        RNGBonus(new ItemStack(Material.DARK_OAK_PLANKS), event.getBlock());
+                case OAK_LOG:
 
-                        break;
+                    event.setCancelled(true);
+                    event.getBlock().setType(Material.AIR);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
+                    RNGBonus(new ItemStack(Material.OAK_PLANKS), event.getBlock());
 
-                    case OAK_LOG:
+                    break;
 
-                        event.setCancelled(true);
-                        event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS, 3));
-                        RNGBonus(new ItemStack(Material.OAK_PLANKS), event.getBlock());
+                case JUNGLE_LOG:
 
-                        break;
+                    event.setCancelled(true);
+                    event.getBlock().setType(Material.AIR);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS));
+                    RNGBonus(new ItemStack(Material.JUNGLE_PLANKS), event.getBlock());
 
-                    case JUNGLE_LOG:
+                    break;
 
-                        event.setCancelled(true);
-                        event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.JUNGLE_PLANKS, 3));
-                        RNGBonus(new ItemStack(Material.JUNGLE_PLANKS), event.getBlock());
+                case SPRUCE_LOG:
 
-                        break;
+                    event.setCancelled(true);
+                    event.getBlock().setType(Material.AIR);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
+                    RNGBonus(new ItemStack(Material.SPRUCE_PLANKS), event.getBlock());
 
-                    case SPRUCE_LOG:
-
-                        event.setCancelled(true);
-                        event.getBlock().setType(Material.AIR);
-                        event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS, 3));
-                        RNGBonus(new ItemStack(Material.SPRUCE_PLANKS), event.getBlock());
-
-                        break;
-                }
-
-
+                    break;
             }
 
         } else {

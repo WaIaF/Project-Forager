@@ -1,6 +1,6 @@
 package me.waiaf.pforager.Listeners;
 
-import net.md_5.bungee.api.ChatColor;
+import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -8,7 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Random;
 
@@ -20,21 +19,14 @@ public class StoneBreak implements Listener {
         if (!event.getBlock().getType().equals(Material.STONE)) return;
         Player player = event.getPlayer();
         ItemStack itemStack = player.getInventory().getItemInMainHand();
-        if (itemStack.hasItemMeta()){
+        if (itemStack.isSimilar(ItemManager.IronPickaxe)){
 
-            ItemMeta meta = itemStack.getItemMeta();
-            assert meta != null;
-            String ItemName = meta.getDisplayName();
-
-            if (ItemName.equalsIgnoreCase(ChatColor.of("#F5FEFD") + "Cúp sắt")){
-
-                event.setCancelled(true);
-                event.getBlock().setType(Material.AIR);
-                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE, 3));
-                RNGBonus(event.getBlock());
-
-            }
-
+            event.setCancelled(true);
+            event.getBlock().setType(Material.AIR);
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COBBLESTONE));
+            RNGBonus(event.getBlock());
 
         }
     }

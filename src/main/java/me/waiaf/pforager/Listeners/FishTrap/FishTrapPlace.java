@@ -28,14 +28,11 @@ public class FishTrapPlace implements Listener {
 
         if (event.getItemInHand().isSimilar(ItemManager.FishTrap)) {
 
-            player.sendMessage("Debug: Player is holding fish trap");
 
             if (event.getBlockReplacedState().getType().equals(Material.WATER)){
 
-                player.sendMessage("Debug: Block replaced is water");
                 TrapDoor FishTrap = (TrapDoor) event.getBlock().getBlockData();
                 FishTrap.setWaterlogged(true);
-                player.sendMessage("Debug: Fish trap placed");
 
                 plugin.CustomBlocks.put(event.getBlock().getLocation(), "FishTrap");
                 plugin.FishTrapCaughtStatus.put(event.getBlock().getLocation(), false);
@@ -43,14 +40,14 @@ public class FishTrapPlace implements Listener {
                 hologram.setVisible(false);
                 hologram.setCustomNameVisible(false);
                 plugin.FishTrapHolograms.put(event.getBlock().getLocation(), hologram);
-                StartFishTrap(event.getBlock(), hologram, event.getPlayer());
+                StartFishTrap(event.getBlock(), hologram);
 
             }
 
         }
     }
 
-    private void StartFishTrap(Block block, ArmorStand hologram, Player debugPlayer){
+    private void StartFishTrap(Block block, ArmorStand hologram){
 
         new BukkitRunnable(){
 
@@ -73,8 +70,7 @@ public class FishTrapPlace implements Listener {
 
                             plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
                             hologram.setCustomNameVisible(true);
-                            hologram.setCustomName(ChatColor.GREEN + "!!!");
-                            debugPlayer.sendMessage("Debug: Fish trap usuable");
+                            hologram.setCustomName(ChatColor.YELLOW + "" + ChatColor.BOLD + "!!!");
 
                         }
                     }

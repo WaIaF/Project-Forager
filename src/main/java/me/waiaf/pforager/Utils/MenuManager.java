@@ -43,7 +43,7 @@ public class MenuManager {
 
         CraftGUIMain = Bukkit.createInventory(null, 27, "Bàn chế tạo | Hãy chọn danh mục");
 
-        AddCategory(CraftGUIMain, new ItemStack(Material.FURNACE, 1), ChatColor.WHITE + "Máy móc",10);
+        AddCategory(CraftGUIMain, new ItemStack(Material.FURNACE, 1), ChatColor.WHITE + "Xây dựng",10);
         AddCategory(CraftGUIMain, new ItemStack(Material.BIRCH_TRAPDOOR, 1), ChatColor.WHITE + "Công cụ",11);
 
     }

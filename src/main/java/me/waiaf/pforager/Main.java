@@ -2,6 +2,7 @@ package me.waiaf.pforager;
 
 import me.waiaf.pforager.Commands.GetItem;
 import me.waiaf.pforager.Listeners.*;
+import me.waiaf.pforager.Listeners.FishTrap.FishTrapBreak;
 import me.waiaf.pforager.Listeners.FishTrap.FishTrapInteract;
 import me.waiaf.pforager.Listeners.FishTrap.FishTrapPlace;
 import me.waiaf.pforager.MenuListeners.CraftingBlockInteract;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public final class Main extends JavaPlugin {
 
@@ -35,6 +37,23 @@ public final class Main extends JavaPlugin {
 
     }
 
+    @Override
+    public void onDisable(){
+
+        CustomBlocks.clear();
+        FishTrapCaughtStatus.clear();
+
+        for (Map.Entry<Location, ArmorStand> entry : FishTrapHolograms.entrySet()){
+
+            ArmorStand armorStand = entry.getValue();
+            armorStand.remove();
+
+        }
+
+        FishTrapHolograms.clear();
+
+    }
+
     private void registerEvents(){
 
         pluginManager.registerEvents(new PlayerFirstJoin(), this);
@@ -48,6 +67,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new CraftingBlockInteract(), this);
         pluginManager.registerEvents(new FishTrapPlace(this), this);
         pluginManager.registerEvents(new FishTrapInteract(this), this);
+        pluginManager.registerEvents(new FishTrapBreak(this), this);
 
     }
 

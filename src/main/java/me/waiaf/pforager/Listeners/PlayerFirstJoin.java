@@ -15,6 +15,10 @@ public class PlayerFirstJoin implements Listener {
 
         if (!player.hasPlayedBefore()){
 
+            /*
+             *      To be removed later
+             */
+
             player.getInventory().addItem(ItemManager.IronPickaxe);
             player.getInventory().addItem(ItemManager.IronAxe);
 
