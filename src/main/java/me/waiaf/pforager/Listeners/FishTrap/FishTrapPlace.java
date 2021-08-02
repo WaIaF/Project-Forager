@@ -24,23 +24,32 @@ public class FishTrapPlace implements Listener {
     @EventHandler
     public void FishTrapPlaceEvent(BlockPlaceEvent event){
 
-        if (!event.getItemInHand().isSimilar(ItemManager.FishTrap)) return;
-        if (!event.getBlockReplacedState().getBlock().getType().equals(Material.WATER)) return;
+        Player player = event.getPlayer();
 
-        event.setCancelled(true);
-        event.getBlock().setType(Material.BIRCH_TRAPDOOR);
-        TrapDoor FishTrap = (TrapDoor) event.getBlock();
-        FishTrap.setWaterlogged(true);
-        event.getPlayer().sendMessage("Debug: Fish trap placed");
+        if (event.getItemInHand().isSimilar(ItemManager.FishTrap)) {
 
-        plugin.CustomBlocks.put(event.getBlock().getLocation(), "FishTrap");
-        plugin.FishTrapCaughtStatus.put(event.getBlock().getLocation(), false);
-        ArmorStand hologram = (ArmorStand) event.getBlock().getWorld().spawnEntity(event.getBlock().getLocation(), EntityType.ARMOR_STAND);
-        plugin.FishTrapHolograms.put(event.getBlock().getLocation(), hologram);
-        hologram.setVisible(false);
-        hologram.setCustomNameVisible(false);
-        StartFishTrap(event.getBlock(), hologram, event.getPlayer());
+            player.sendMessage("Debug: Player is holding fish trap");
 
+            if (!event.getBlockReplacedState().getBlock().getType().equals(Material.WATER)){
+
+                player.sendMessage("Debug: Block replaced is water");
+                event.setCancelled(true);
+                event.getBlock().setType(Material.BIRCH_TRAPDOOR);
+                TrapDoor FishTrap = (TrapDoor) event.getBlock();
+                FishTrap.setWaterlogged(true);
+                player.sendMessage("Debug: Fish trap placed");
+
+                plugin.CustomBlocks.put(event.getBlock().getLocation(), "FishTrap");
+                plugin.FishTrapCaughtStatus.put(event.getBlock().getLocation(), false);
+                ArmorStand hologram = (ArmorStand) event.getBlock().getWorld().spawnEntity(event.getBlock().getLocation(), EntityType.ARMOR_STAND);
+                plugin.FishTrapHolograms.put(event.getBlock().getLocation(), hologram);
+                hologram.setVisible(false);
+                hologram.setCustomNameVisible(false);
+                StartFishTrap(event.getBlock(), hologram, event.getPlayer());
+
+            }
+
+        }
     }
 
     private void StartFishTrap(Block block, ArmorStand hologram, Player debugPlayer){

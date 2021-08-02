@@ -15,32 +15,23 @@ public class CraftingBlockInteract implements Listener {
 
         if (event.getClickedBlock() == null) return;
 
-        if (!event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE) ||
-                !event.getClickedBlock().getType().equals(Material.FURNACE) ||
-                !event.getClickedBlock().getType().equals(Material.ANVIL)) return;
-
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 
-        Player player = event.getPlayer();
+        if (event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE)){
 
-        event.setCancelled(true);
+            event.setCancelled(true);
+            event.getPlayer().openInventory(MenuManager.CraftGUIMain);
 
-        switch (event.getClickedBlock().getType()){
+        } else if (event.getClickedBlock().getType().equals(Material.FURNACE)){
 
-            case CRAFTING_TABLE:
+            event.setCancelled(true);
+            event.getPlayer().openInventory(MenuManager.FurnaceGUIMain);
 
-                player.openInventory(MenuManager.CraftGUIMain);
-                break;
+        } else if (event.getClickedBlock().getType().equals(Material.ANVIL)){
 
-            case FURNACE:
+            event.setCancelled(true);
+            event.getPlayer().openInventory(MenuManager.AnvilGUIMain);
 
-                player.openInventory(MenuManager.FurnaceGUIMain);
-                break;
-
-            case ANVIL:
-
-                player.openInventory(MenuManager.AnvilGUIMain);
-                break;
         }
     }
 

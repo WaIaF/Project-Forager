@@ -25,25 +25,42 @@ public class FishTrapInteract implements Listener {
     @EventHandler
     public void FishTrapInteractEvent(PlayerInteractEvent event){
 
+        Player player = event.getPlayer();
         Block block = event.getClickedBlock();
 
         if (block == null) return;
-        if (!block.getType().equals(Material.BIRCH_TRAPDOOR)) return;
+        player.sendMessage("Debug: Block is not null");
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
-        if (!plugin.CustomBlocks.containsKey(block.getLocation())) return;
-        if (!plugin.CustomBlocks.get(event.getClickedBlock().getLocation()).equalsIgnoreCase("FishTrap")) return;
+        player.sendMessage("Debug: Right clicked block");
+        if (block.getType().equals(Material.BIRCH_TRAPDOOR)){
 
-        event.setCancelled(true);
+            player.sendMessage("Debug: Block is a trapdoor");
 
-        if (!plugin.FishTrapCaughtStatus.get(event.getClickedBlock().getLocation()).equals(false)) return;
+            if (plugin.CustomBlocks.containsKey(block.getLocation())){
 
-        ArmorStand hologram = plugin.FishTrapHolograms.get(event.getClickedBlock().getLocation());
-        Player player = event.getPlayer();
-        hologram.setCustomNameVisible(false);
-        plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
-        RNGJesus(player);
-        StartFishTrap(block, hologram);
+                player.sendMessage("Debug: Contains key");
 
+                if (plugin.CustomBlocks.get(event.getClickedBlock().getLocation()).equalsIgnoreCase("FishTrap")){
+
+                    player.sendMessage("Debug: Is A Fish Trap");
+
+                    event.setCancelled(true);
+
+                    if (plugin.FishTrapCaughtStatus.get(event.getClickedBlock().getLocation()).equals(true)){
+
+                        ArmorStand hologram = plugin.FishTrapHolograms.get(event.getClickedBlock().getLocation());
+                        hologram.setCustomNameVisible(false);
+                        plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
+                        RNGJesus(player);
+                        StartFishTrap(block, hologram);
+
+                    }
+
+                }
+
+            }
+
+        }
     }
 
     private void RNGJesus(Player player){
