@@ -30,7 +30,7 @@ public class FishTrapPlace implements Listener {
 
             player.sendMessage("Debug: Player is holding fish trap");
 
-            if (event.getBlockReplacedState().getBlock().getType().equals(Material.WATER)){
+            if (event.getBlockReplacedState().getType().equals(Material.WATER)){
 
                 player.sendMessage("Debug: Block replaced is water");
                 event.setCancelled(true);
