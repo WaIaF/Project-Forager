@@ -15,8 +15,9 @@ public class CraftingBlockInteract implements Listener {
 
         if (event.getClickedBlock() == null) return;
 
-        if (!event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE)) return;
-        if (!event.getClickedBlock().getType().equals(Material.FURNACE)) return;
+        if (!event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE) ||
+                !event.getClickedBlock().getType().equals(Material.FURNACE) ||
+                !event.getClickedBlock().getType().equals(Material.ANVIL)) return;
 
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 

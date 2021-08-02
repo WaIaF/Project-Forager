@@ -19,6 +19,7 @@ public class OreBreak implements Listener {
 
         Player player = event.getPlayer();
         ItemStack itemStack = player.getInventory().getItemInMainHand();
+        if (!itemStack.hasItemMeta()) return;
         ItemMeta meta = itemStack.getItemMeta();
         assert meta != null;
         String ItemName = meta.getDisplayName();
