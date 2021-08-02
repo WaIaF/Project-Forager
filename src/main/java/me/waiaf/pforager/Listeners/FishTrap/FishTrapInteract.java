@@ -46,13 +46,14 @@ public class FishTrapInteract implements Listener {
 
                     event.setCancelled(true);
 
-                    if (plugin.FishTrapCaughtStatus.get(event.getClickedBlock().getLocation()).equals(true)){
+                    if (plugin.FishTrapCaughtStatus.get(event.getClickedBlock().getLocation())){
 
+                        player.sendMessage("Is Done");
                         ArmorStand hologram = plugin.FishTrapHolograms.get(event.getClickedBlock().getLocation());
                         hologram.setCustomNameVisible(false);
-                        plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
+                        plugin.FishTrapCaughtStatus.put(block.getLocation(), false);
                         RNGJesus(player);
-                        StartFishTrap(block, hologram);
+                        StartFishTrap(block, hologram, player);
 
                     }
 
@@ -90,7 +91,7 @@ public class FishTrapInteract implements Listener {
 
     }
 
-    private void StartFishTrap(Block block, ArmorStand hologram){
+    private void StartFishTrap(Block block, ArmorStand hologram, Player debugPlayer){
 
         new BukkitRunnable(){
 
@@ -113,6 +114,7 @@ public class FishTrapInteract implements Listener {
                             plugin.FishTrapCaughtStatus.put(block.getLocation(), true);
                             hologram.setCustomNameVisible(true);
                             hologram.setCustomName(ChatColor.GREEN + "!!!");
+                            debugPlayer.sendMessage("Debug: Fish trap usuable");
 
 
                         }
@@ -120,7 +122,7 @@ public class FishTrapInteract implements Listener {
                 }
             }
 
-        }.runTaskLater(Main.getPlugin(Main.class), 20*20);
+        }.runTaskLater(Main.getPlugin(Main.class), 10*20);
 
     }
 
