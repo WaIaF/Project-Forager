@@ -20,11 +20,7 @@ public class GetItem implements CommandExecutor {
 
                 if (player.hasPermission("projectforager.getitem")){
 
-                    if (args.length < 1){
-
-                        player.sendMessage(ChatColor.WHITE + "Cách dùng lệnh: /getitem <ID vật phẩm>");
-
-                    } else if (args.length == 1){
+                    if (args.length == 1){
 
                         try{
 
@@ -46,9 +42,36 @@ public class GetItem implements CommandExecutor {
 
                         }
 
+                    } else if (args.length == 2){
+
+                        try{
+
+                            if (ItemManager.ItemIDs.containsKey(Integer.parseInt(args[0]))){
+
+                                ItemStack itemStack = ItemManager.ItemIDs.get(Integer.parseInt(args[0]));
+                                itemStack.setAmount(Integer.parseInt(args[1]));
+                                player.getInventory().addItem(itemStack);
+
+                            } else {
+
+                                player.sendMessage(ChatColor.RED + "ID không tồn tại");
+
+                            }
+
+                        } catch (NumberFormatException exception){
+
+                            player.sendMessage(ChatColor.RED + "Vui lòng điền ID / số lượng hợp lệ");
+                            return true;
+
+                        }
+
+                    } else if (args.length < 1){
+
+                        player.sendMessage(ChatColor.WHITE + "Cách dùng lệnh: /getitem <ID vật phẩm> [số lượng]");
+
                     } else {
 
-                        player.sendMessage(ChatColor.WHITE + "Cách dùng lệnh: /getitem <ID vật phẩm>");
+                        player.sendMessage(ChatColor.WHITE + "Cách dùng lệnh: /getitem <ID vật phẩm> [số lượng]");
 
                     }
 
