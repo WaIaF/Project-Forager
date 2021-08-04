@@ -36,15 +36,19 @@ public class FishTrapInteract implements Listener {
 
                 if (plugin.CustomBlocks.get(block.getLocation()).equalsIgnoreCase("FishTrap")){
 
-                    event.setCancelled(true);
+                    if (!player.isSneaking()){
 
-                    if (plugin.FishTrapCaughtStatus.get(block.getLocation())){
+                        event.setCancelled(true);
 
-                        ArmorStand hologram = plugin.FishTrapHolograms.get(block.getLocation());
-                        hologram.setCustomNameVisible(false);
-                        plugin.FishTrapCaughtStatus.put(block.getLocation(), false);
-                        RNGJesus(player);
-                        StartFishTrap(block, hologram);
+                        if (plugin.FishTrapCaughtStatus.get(block.getLocation())){
+
+                            ArmorStand hologram = plugin.FishTrapHolograms.get(block.getLocation());
+                            hologram.setCustomNameVisible(false);
+                            plugin.FishTrapCaughtStatus.put(block.getLocation(), false);
+                            RNGJesus(player);
+                            StartFishTrap(block, hologram);
+
+                        }
 
                     }
 

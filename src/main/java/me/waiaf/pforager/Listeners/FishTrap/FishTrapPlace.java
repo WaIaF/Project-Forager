@@ -5,6 +5,7 @@ import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.Bisected;
 import org.bukkit.block.data.type.TrapDoor;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -33,6 +34,7 @@ public class FishTrapPlace implements Listener {
 
                 TrapDoor FishTrap = (TrapDoor) event.getBlock().getBlockData();
                 FishTrap.setWaterlogged(true);
+                FishTrap.setHalf(Bisected.Half.TOP);
 
                 plugin.CustomBlocks.put(event.getBlock().getLocation(), "FishTrap");
                 plugin.FishTrapCaughtStatus.put(event.getBlock().getLocation(), false);
