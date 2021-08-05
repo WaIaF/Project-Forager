@@ -55,7 +55,7 @@ public class MenuManager {
         ItemStack FishTrap = new ItemStack(Material.BIRCH_TRAPDOOR);
         ItemMeta FishTrapMeta = FishTrap.getItemMeta();
         assert FishTrapMeta != null;
-        FishTrapMeta.setDisplayName("Bẩy cá");
+        FishTrapMeta.setDisplayName(ChatColor.WHITE + "Bẩy cá");
         FishTrap.setItemMeta(FishTrapMeta);
         List<String> FishTrapLore = new ArrayList<>();
         FishTrapLore.add("");
