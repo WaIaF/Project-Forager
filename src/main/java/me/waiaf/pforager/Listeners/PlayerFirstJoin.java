@@ -19,8 +19,6 @@ public class PlayerFirstJoin implements Listener {
 
         Player player = event.getPlayer();
 
-        plugin.scoreboard.createBoard(player);
-
         if (!player.hasPlayedBefore()){
 
             player.getInventory().addItem(ItemManager.IronPickaxe);
@@ -39,6 +37,8 @@ public class PlayerFirstJoin implements Listener {
             plugin.coinManager.saveConfig();
 
         }
+
+        plugin.scoreboard.createBoard(player);
 
     }
 
