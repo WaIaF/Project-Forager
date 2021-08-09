@@ -2,6 +2,7 @@ package me.waiaf.pforager.Listeners;
 
 import me.waiaf.pforager.Main;
 import me.waiaf.pforager.Utils.ItemManager;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -57,6 +58,7 @@ public class OreBreak implements Listener {
                     plugin.PlayerCoins.put(player, playercoin);
                     plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", playercoin);
                     plugin.coinManager.saveConfig();
+                    player.sendMessage(ChatColor.YELLOW + "+1 Coin");
 
                     break;
             }
