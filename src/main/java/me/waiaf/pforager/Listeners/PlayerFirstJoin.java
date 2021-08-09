@@ -27,6 +27,8 @@ public class PlayerFirstJoin implements Listener {
 
             player.getInventory().addItem(ItemManager.IronPickaxe);
             player.getInventory().addItem(ItemManager.IronAxe);
+            plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", 0);
+            plugin.coinManager.saveConfig();
 
         } else {
 
@@ -37,6 +39,8 @@ public class PlayerFirstJoin implements Listener {
             } else {
 
                 plugin.PlayerCoins.put(player, 0);
+                plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", 0);
+                plugin.coinManager.saveConfig();
 
             }
 
