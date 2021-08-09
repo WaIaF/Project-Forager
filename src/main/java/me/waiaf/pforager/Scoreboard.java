@@ -2,8 +2,6 @@ package me.waiaf.pforager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -24,7 +22,7 @@ public class Scoreboard {
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
         assert scoreboardManager != null;
         org.bukkit.scoreboard.Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
-        final Objective objective = scoreboard.registerNewObjective("PlayerScoreboard", "dummy", ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
+        Objective objective = scoreboard.registerNewObjective("PlayerScoreboard", "dummy", ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         Score score1 = objective.getScore("");
         score1.setScore(6);

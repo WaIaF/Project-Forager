@@ -50,8 +50,6 @@ public final class Main extends JavaPlugin {
         if (!Bukkit.getOnlinePlayers().isEmpty())
             for (Player online : Bukkit.getOnlinePlayers()){
 
-                scoreboard.createBoard(online);
-
                 if (coinManager.getConfig().contains("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins")){
 
                     PlayerCoins.put(online, coinManager.getConfig().getInt("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins"));
@@ -63,6 +61,8 @@ public final class Main extends JavaPlugin {
                     coinManager.saveConfig();
 
                 }
+
+                scoreboard.createBoard(online);
 
             }
     }
