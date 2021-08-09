@@ -17,6 +17,7 @@ public class Scoreboard {
 
     public void createBoard(Player player){
 
+        int coin = plugin.PlayerCoins.get(player);
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
         assert scoreboardManager != null;
         org.bukkit.scoreboard.Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
@@ -24,7 +25,7 @@ public class Scoreboard {
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         Score score1 = objective.getScore(" ");
         score1.setScore(420);
-        Score score2 = objective.getScore(ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + plugin.PlayerCoins.get(player));
+        Score score2 = objective.getScore(ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + coin);
         score2.setScore(69);
         Score score3 = objective.getScore("  ");
         score3.setScore(-69);
