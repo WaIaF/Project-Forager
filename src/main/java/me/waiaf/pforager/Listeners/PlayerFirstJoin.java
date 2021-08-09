@@ -23,26 +23,20 @@ public class PlayerFirstJoin implements Listener {
 
         if (!player.hasPlayedBefore()){
 
-            plugin.PlayerCoins.put(player, 0);
-
             player.getInventory().addItem(ItemManager.IronPickaxe);
             player.getInventory().addItem(ItemManager.IronAxe);
-            plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", 0);
-            plugin.coinManager.saveConfig();
+
+        }
+
+        if (plugin.coinManager.getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins")){
+
+            plugin.PlayerCoins.put(player, plugin.coinManager.getConfig().getInt("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins"));
 
         } else {
 
-            if (plugin.coinManager.getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins")){
-
-                plugin.PlayerCoins.put(player, plugin.coinManager.getConfig().getInt("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins"));
-
-            } else {
-
-                plugin.PlayerCoins.put(player, 0);
-                plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", 0);
-                plugin.coinManager.saveConfig();
-
-            }
+            plugin.PlayerCoins.put(player, 0);
+            plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", 0);
+            plugin.coinManager.saveConfig();
 
         }
 

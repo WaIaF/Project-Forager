@@ -24,7 +24,7 @@ public class Scoreboard {
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         Score score1 = objective.getScore(" ");
         score1.setScore(420);
-        Score score2 = objective.getScore(ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + this.plugin.PlayerCoins.get(player));
+        Score score2 = objective.getScore(ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + plugin.PlayerCoins.get(player));
         score2.setScore(69);
         Score score3 = objective.getScore("  ");
         score3.setScore(-69);
