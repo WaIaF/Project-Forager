@@ -36,17 +36,19 @@ public class Scoreboard {
         score5.setScore(2);
         Score score6 = objective.getScore(ChatColor.YELLOW + "github.com/WaIaF");
         score6.setScore(1);
-        updateScoreboard(player, scoreboard);
+        updateScoreboard(player, scoreboard, coin, objective);
 
     }
 
-    private void updateScoreboard(Player player, org.bukkit.scoreboard.Scoreboard scoreboard){
+    private void updateScoreboard(Player player, org.bukkit.scoreboard.Scoreboard scoreboard, Integer coin, Objective objective){
 
         new BukkitRunnable(){
 
             @Override
             public void run(){
 
+                Score score3 = objective.getScore(ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + coin);
+                score3.setScore(4);
                 player.setScoreboard(scoreboard);
 
             }
