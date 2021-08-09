@@ -7,15 +7,15 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class PlayerFirstJoin implements Listener {
+public class PlayerJoin implements Listener {
 
     Main plugin;
-    public PlayerFirstJoin(Main plugin){
+    public PlayerJoin(Main plugin){
         this.plugin = plugin;
     }
 
     @EventHandler
-    public void PlayerFirstJoinEvent(PlayerJoinEvent event){
+    public void PlayerJoinEvent(PlayerJoinEvent event){
 
         Player player = event.getPlayer();
 

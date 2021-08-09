@@ -89,7 +89,7 @@ public final class Main extends JavaPlugin {
 
     private void registerEvents(){
 
-        pluginManager.registerEvents(new PlayerFirstJoin(this), this);
+        pluginManager.registerEvents(new PlayerJoin(this), this);
         pluginManager.registerEvents(new StoneBreak(), this);
         pluginManager.registerEvents(new DigGrass(), this);
         pluginManager.registerEvents(new CraftingGUIListener(), this);

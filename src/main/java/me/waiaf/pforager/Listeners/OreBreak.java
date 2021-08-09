@@ -4,6 +4,7 @@ import me.waiaf.pforager.Main;
 import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -54,11 +55,15 @@ public class OreBreak implements Listener {
                     CancelAndSetAir(event, event.getBlock());
                     DropWithCobble(new ItemStack(Material.RAW_GOLD), event.getBlock());
                     RNGBonus(new ItemStack(Material.RAW_GOLD), event.getBlock());
+
+                    // Placeholder to test Coins
+
                     int playercoin = plugin.PlayerCoins.get(player) + 1;
                     plugin.PlayerCoins.put(player, playercoin);
                     plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", playercoin);
                     plugin.coinManager.saveConfig();
                     player.sendMessage(ChatColor.YELLOW + "+1 Coin");
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
                     break;
             }
