@@ -1,5 +1,6 @@
 package me.waiaf.pforager.Listeners;
 
+import me.waiaf.pforager.Main;
 import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -12,6 +13,12 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Random;
 
 public class OreBreak implements Listener {
+
+    Main plugin;
+
+    public OreBreak(Main plugin){
+        this.plugin = plugin;
+    }
 
     @EventHandler
     public void OreBreakEvent(BlockBreakEvent event){
@@ -46,6 +53,10 @@ public class OreBreak implements Listener {
                     CancelAndSetAir(event, event.getBlock());
                     DropWithCobble(new ItemStack(Material.RAW_GOLD), event.getBlock());
                     RNGBonus(new ItemStack(Material.RAW_GOLD), event.getBlock());
+                    int playercoin = plugin.PlayerCoins.get(player) + 1;
+                    plugin.PlayerCoins.put(player, playercoin);
+                    plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", playercoin);
+                    plugin.coinManager.saveConfig();
 
                     break;
             }

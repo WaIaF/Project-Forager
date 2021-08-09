@@ -5,6 +5,6 @@ Current Status: WIP
 
 Todo: **~~No idea lmaooooooooooo~~**
 
-Recent Changes: you can input how much item you wanna get with /getitem
+Recent Changes: Added currency and scoreboard
 
 **Please keep in mind that this project isn't endorsed by HopFrog and was meant to be used for a private server to have fun with my friends**
