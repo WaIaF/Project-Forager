@@ -22,11 +22,11 @@ public class Scoreboard {
         org.bukkit.scoreboard.Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
         final Objective objective = scoreboard.registerNewObjective("PlayerScoreboard", "dummy", ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        Score score1 = objective.getScore("");
+        Score score1 = objective.getScore(" ");
         score1.setScore(420);
         Score score2 = objective.getScore(ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + plugin.PlayerCoins.get(player));
         score2.setScore(69);
-        Score score3 = objective.getScore("");
+        Score score3 = objective.getScore("  ");
         score3.setScore(-69);
         Score score4 = objective.getScore(ChatColor.YELLOW + "github.com/WaIaF");
         score4.setScore(-420);

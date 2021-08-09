@@ -30,10 +30,15 @@ public class PlayerFirstJoin implements Listener {
 
         } else {
 
-            if (plugin.coinManager.getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins"))
+            if (plugin.coinManager.getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins")){
 
                 plugin.PlayerCoins.put(player, plugin.coinManager.getConfig().getInt("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins"));
 
+            } else {
+
+                plugin.PlayerCoins.put(player, 0);
+
+            }
 
         }
 
