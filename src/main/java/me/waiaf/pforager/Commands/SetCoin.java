@@ -59,6 +59,10 @@ public class SetCoin implements CommandExecutor {
                                 plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", coin);
                                 plugin.coinManager.saveConfig();
 
+                            } else {
+
+                                Commandsender.sendMessage(ChatColor.RED + "Người chơi không tồn tại hoặc đang offline");
+
                             }
 
                         } catch (NumberFormatException exception){
