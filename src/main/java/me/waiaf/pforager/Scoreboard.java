@@ -19,13 +19,16 @@ public class Scoreboard {
         scoreboard.addPlayer(player);
         scoreboard.setTitle(player, ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
         scoreboard.setLines(player,
-                ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=-=",
+                StringUtils.center(ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=", 19),
                 "",
                 StringUtils.center(ChatColor.WHITE + "Tên người chơi", 19),
                 StringUtils.center(ChatColor.GREEN + player.getName(), 19),
                 "",
                 StringUtils.center(ChatColor.WHITE + "Coins", 19),
-                StringUtils.center(ChatColor.YELLOW + plugin.PlayerCoins.get(player).toString(), 19),
+                StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 19),
+                "",
+                StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 19),
+                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(Math.round(player.getExp())), 19),
                 "",
                 ChatColor.YELLOW + "github.com/WaIaF");
 
@@ -40,13 +43,16 @@ public class Scoreboard {
             public void run(){
 
                 scoreboard.setLines(player,
-                        ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=-=",
+                        StringUtils.center(ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=", 19),
                         "",
                         StringUtils.center(ChatColor.WHITE + "Tên người chơi", 19),
                         StringUtils.center(ChatColor.GREEN + player.getName(), 19),
                         "",
                         StringUtils.center(ChatColor.WHITE + "Coins", 19),
-                        StringUtils.center(ChatColor.YELLOW + plugin.PlayerCoins.get(player).toString(), 19),
+                        StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 19),
+                        "",
+                        StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 19),
+                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(Math.round(player.getExp())), 19),
                         "",
                         ChatColor.YELLOW + "github.com/WaIaF");
 

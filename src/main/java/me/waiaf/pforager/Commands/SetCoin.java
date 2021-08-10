@@ -3,6 +3,7 @@ package me.waiaf.pforager.Commands;
 import me.waiaf.pforager.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -39,6 +40,8 @@ public class SetCoin implements CommandExecutor {
                             plugin.PlayerCoins.put(Commandsender, coin);
                             plugin.coinManager.getConfig().set("Players." + Commandsender.getName() + "." + Commandsender.getUniqueId().toString() + ".Coins", coin);
                             plugin.coinManager.saveConfig();
+                            Commandsender.sendMessage(ChatColor.GREEN + "Thành công!");
+                            Commandsender.playSound(Commandsender.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
                         } catch (NumberFormatException exception){
 
@@ -58,6 +61,8 @@ public class SetCoin implements CommandExecutor {
                                 plugin.PlayerCoins.put(player, coin);
                                 plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", coin);
                                 plugin.coinManager.saveConfig();
+                                Commandsender.sendMessage(ChatColor.GREEN + "Thành công!");
+                                Commandsender.playSound(Commandsender.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
                             } else {
 

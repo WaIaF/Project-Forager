@@ -2,6 +2,7 @@ package me.waiaf.pforager.Commands;
 
 import me.waiaf.pforager.Utils.ItemManager;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,6 +29,8 @@ public class GetItem implements CommandExecutor {
 
                                 ItemStack itemStack = ItemManager.ItemIDs.get(Integer.parseInt(args[0]));
                                 player.getInventory().addItem(itemStack);
+                                player.sendMessage(ChatColor.GREEN + "Thành công!");
+                                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
                             } else {
 
