@@ -37,7 +37,7 @@ public class GetItem implements CommandExecutor {
 
                         } catch (NumberFormatException exception){
 
-                            player.sendMessage(ChatColor.RED + "Vui lòng điền ID hợp lệ");
+                            player.sendMessage(ChatColor.RED + "Vui lòng nhập ID hợp lệ");
                             return true;
 
                         }

@@ -56,15 +56,6 @@ public class OreBreak implements Listener {
                     DropWithCobble(new ItemStack(Material.RAW_GOLD), event.getBlock());
                     RNGBonus(new ItemStack(Material.RAW_GOLD), event.getBlock());
 
-                    // Placeholder to test Coins
-
-                    int playercoin = plugin.PlayerCoins.get(player) + 1;
-                    plugin.PlayerCoins.put(player, playercoin);
-                    plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", playercoin);
-                    plugin.coinManager.saveConfig();
-                    player.sendMessage(ChatColor.YELLOW + "+1 Coin");
-                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-
                     break;
             }
 

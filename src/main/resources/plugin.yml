@@ -9,3 +9,6 @@ commands:
     usage: /getitem
     description: dùng để lấy vật phẩm
     aliases: [item]
+  setcoin:
+    usage: /setcoin
+    description: đặt số coin của người chơi

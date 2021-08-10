@@ -1,6 +1,7 @@
 package me.waiaf.pforager;
 
 import me.waiaf.pforager.Commands.GetItem;
+import me.waiaf.pforager.Commands.SetCoin;
 import me.waiaf.pforager.Files.CoinManager;
 import me.waiaf.pforager.Listeners.*;
 import me.waiaf.pforager.Listeners.FishTrap.FishTrapBreak;
@@ -107,6 +108,7 @@ public final class Main extends JavaPlugin {
     private void setExecutors(){
 
         this.getCommand("getitem").setExecutor(new GetItem());
+        this.getCommand("setcoin").setExecutor(new SetCoin(this));
 
     }
 

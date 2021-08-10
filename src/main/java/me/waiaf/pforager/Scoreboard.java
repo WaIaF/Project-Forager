@@ -21,10 +21,11 @@ public class Scoreboard {
         scoreboard.setLines(player,
                 ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=-=",
                 "",
+                StringUtils.center(ChatColor.WHITE + "Tên người chơi", 19),
+                StringUtils.center(ChatColor.GREEN + player.getName(), 19),
                 "",
                 StringUtils.center(ChatColor.WHITE + "Coins", 19),
                 StringUtils.center(ChatColor.YELLOW + plugin.PlayerCoins.get(player).toString(), 19),
-                "",
                 "",
                 ChatColor.YELLOW + "github.com/WaIaF");
 
@@ -41,16 +42,17 @@ public class Scoreboard {
                 scoreboard.setLines(player,
                         ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=-=",
                         "",
+                        StringUtils.center(ChatColor.WHITE + "Tên người chơi", 19),
+                        StringUtils.center(ChatColor.GREEN + player.getName(), 19),
                         "",
                         StringUtils.center(ChatColor.WHITE + "Coins", 19),
                         StringUtils.center(ChatColor.YELLOW + plugin.PlayerCoins.get(player).toString(), 19),
-                        "",
                         "",
                         ChatColor.YELLOW + "github.com/WaIaF");
 
             }
 
-        }.runTaskTimer(Main.getPlugin(Main.class), 5, 5);
+        }.runTaskTimer(Main.getPlugin(Main.class), 3, 3);
 
     }
 
