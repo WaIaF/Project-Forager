@@ -1,6 +1,7 @@
 package me.waiaf.pforager;
 
 import dev.jcsoftware.jscoreboards.JPerPlayerMethodBasedScoreboard;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -18,13 +19,13 @@ public class Scoreboard {
         scoreboard.addPlayer(player);
         scoreboard.setTitle(player, ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
         scoreboard.setLines(player,
-                ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=",
+                ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=-=",
                 "",
                 "",
-                ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + plugin.PlayerCoins.get(player),
+                StringUtils.center(ChatColor.WHITE + "Coins", 19),
+                StringUtils.center(ChatColor.YELLOW + plugin.PlayerCoins.get(player).toString(), 19),
                 "",
                 "",
-                ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=",
                 ChatColor.YELLOW + "github.com/WaIaF");
 
         updateScoreboard(scoreboard, player);
@@ -38,18 +39,18 @@ public class Scoreboard {
             public void run(){
 
                 scoreboard.setLines(player,
-                        ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=",
+                        ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=-=",
                         "",
                         "",
-                        ChatColor.WHITE + "Coins: " + ChatColor.YELLOW + plugin.PlayerCoins.get(player),
+                        StringUtils.center(ChatColor.WHITE + "Coins", 19),
+                        StringUtils.center(ChatColor.YELLOW + plugin.PlayerCoins.get(player).toString(), 19),
                         "",
                         "",
-                        ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=-=-=-=",
                         ChatColor.YELLOW + "github.com/WaIaF");
 
             }
 
-        }.runTaskTimer(Main.getPlugin(Main.class), 10, 10);
+        }.runTaskTimer(Main.getPlugin(Main.class), 5, 5);
 
     }
 
