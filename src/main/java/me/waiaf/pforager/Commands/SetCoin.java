@@ -38,8 +38,8 @@ public class SetCoin implements CommandExecutor {
                             int coin = Integer.parseInt(args[0]);
 
                             plugin.PlayerCoins.put(Commandsender, coin);
-                            plugin.coinManager.getConfig().set("Players." + Commandsender.getName() + "." + Commandsender.getUniqueId().toString() + ".Coins", coin);
-                            plugin.coinManager.saveConfig();
+                            plugin.playerDataManager.getConfig().set("Players." + Commandsender.getName() + "." + Commandsender.getUniqueId().toString() + ".Coins", coin);
+                            plugin.playerDataManager.saveConfig();
                             Commandsender.sendMessage(ChatColor.GREEN + "Thành công!");
                             Commandsender.playSound(Commandsender.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
@@ -59,8 +59,8 @@ public class SetCoin implements CommandExecutor {
                             if (player != null && player.hasPlayedBefore() && player.isOnline()){
 
                                 plugin.PlayerCoins.put(player, coin);
-                                plugin.coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", coin);
-                                plugin.coinManager.saveConfig();
+                                plugin.playerDataManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", coin);
+                                plugin.playerDataManager.saveConfig();
                                 Commandsender.sendMessage(ChatColor.GREEN + "Thành công!");
                                 Commandsender.playSound(Commandsender.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 

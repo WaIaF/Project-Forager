@@ -2,7 +2,7 @@ package me.waiaf.pforager;
 
 import me.waiaf.pforager.Commands.GetItem;
 import me.waiaf.pforager.Commands.SetCoin;
-import me.waiaf.pforager.Files.CoinManager;
+import me.waiaf.pforager.Files.PlayerDataManager;
 import me.waiaf.pforager.Listeners.*;
 import me.waiaf.pforager.Listeners.FishTrap.FishTrapBreak;
 import me.waiaf.pforager.Listeners.FishTrap.FishTrapInteract;
@@ -24,7 +24,7 @@ import java.util.Map;
 
 public final class Main extends JavaPlugin {
 
-    public CoinManager coinManager;
+    public PlayerDataManager playerDataManager;
 
     public HashMap<Player, Integer> PlayerCoins = new HashMap<>();
 
@@ -40,7 +40,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable(){
 
-        this.coinManager = new CoinManager(this);
+        this.playerDataManager = new PlayerDataManager(this);
         this.scoreboard = new Scoreboard(this);
 
         ItemManager.init();
@@ -51,15 +51,15 @@ public final class Main extends JavaPlugin {
         if (!Bukkit.getOnlinePlayers().isEmpty())
             for (Player online : Bukkit.getOnlinePlayers()){
 
-                if (coinManager.getConfig().contains("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins")){
+                if (playerDataManager.getConfig().contains("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins")){
 
-                    PlayerCoins.put(online, coinManager.getConfig().getInt("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins"));
+                    PlayerCoins.put(online, playerDataManager.getConfig().getInt("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins"));
 
                 } else {
 
                     PlayerCoins.put(online, 0);
-                    coinManager.getConfig().set("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins", 0);
-                    coinManager.saveConfig();
+                    playerDataManager.getConfig().set("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins", 0);
+                    playerDataManager.saveConfig();
 
                 }
 
@@ -81,8 +81,8 @@ public final class Main extends JavaPlugin {
         for (Map.Entry<Player, Integer> entry : PlayerCoins.entrySet()){
 
             Player player = entry.getKey();
-            coinManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", entry.getValue());
-            coinManager.saveConfig();
+            playerDataManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", entry.getValue());
+            playerDataManager.saveConfig();
 
         }
 

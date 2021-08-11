@@ -10,10 +10,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 
-public class CoinManager {
+public class PlayerDataManager {
 
     Main plugin;
-    public CoinManager(Main plugin){
+    public PlayerDataManager(Main plugin){
         this.plugin = plugin;
         saveDefaultConfig();
     }
@@ -23,11 +23,11 @@ public class CoinManager {
 
     public void reloadConfig(){
 
-        if (this.configFile == null) this.configFile = new File(this.plugin.getDataFolder(), "coins.yml");
+        if (this.configFile == null) this.configFile = new File(this.plugin.getDataFolder(), "playerdata.yml");
 
         this.coinsConfig = YamlConfiguration.loadConfiguration(this.configFile);
 
-        InputStream defaultStream = this.plugin.getResource("coins.yml");
+        InputStream defaultStream = this.plugin.getResource("playerdata.yml");
 
         if (defaultStream != null) {
             YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
@@ -61,11 +61,11 @@ public class CoinManager {
 
     public void saveDefaultConfig(){
 
-        if (this.configFile == null) this.configFile = new File(this.plugin.getDataFolder(), "coins.yml");
+        if (this.configFile == null) this.configFile = new File(this.plugin.getDataFolder(), "playerdata.yml");
 
         if (!this.configFile.exists()){
 
-            this.plugin.saveResource("coins.yml", false);
+            this.plugin.saveResource("playerdata.yml", false);
 
         }
     }

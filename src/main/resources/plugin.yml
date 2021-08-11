@@ -1,5 +1,5 @@
 name: ProjectForager
-version: 0.1A
+version: 0.2A
 main: me.waiaf.pforager.Main
 api-version: 1.17
 authors: [ WaIaF ]
