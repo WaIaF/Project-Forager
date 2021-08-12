@@ -21,18 +21,17 @@ public class Scoreboard {
         scoreboard.addPlayer(player);
         scoreboard.setTitle(player, ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
         scoreboard.setLines(player,
-                StringUtils.center(ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=", 19),
                 "",
-                StringUtils.center(ChatColor.WHITE + "Tên người chơi", 19),
-                StringUtils.center(ChatColor.GREEN + player.getName(), 19),
+                StringUtils.center(ChatColor.WHITE + "Tên người chơi", 21),
+                StringUtils.center(ChatColor.GREEN + player.getName(), 21),
                 "",
-                StringUtils.center(ChatColor.WHITE + "Coins", 19),
+                StringUtils.center(ChatColor.WHITE + "Coins", 21),
                 StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 19),
                 "",
-                StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 19),
-                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 19),
+                StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 21),
+                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 21),
                 "",
-                ChatColor.YELLOW + "github.com/WaIaF");
+                StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 21));
 
         updateScoreboard(scoreboard, player, LevelReq);
     }
@@ -45,18 +44,17 @@ public class Scoreboard {
             public void run(){
 
                 scoreboard.setLines(player,
-                        StringUtils.center(ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "=-=-=-=-=-=", 19),
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Tên người chơi", 19),
-                        StringUtils.center(ChatColor.GREEN + player.getName(), 19),
+                        StringUtils.center(ChatColor.WHITE + "Tên người chơi", 21),
+                        StringUtils.center(ChatColor.GREEN + player.getName(), 21),
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Coins", 19),
-                        StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 19),
+                        StringUtils.center(ChatColor.WHITE + "Coins", 21),
+                        StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 21),
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 19),
-                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 19),
+                        StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 21),
+                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 21),
                         "",
-                        ChatColor.YELLOW + "github.com/WaIaF");
+                        StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 21));
 
             }
 
