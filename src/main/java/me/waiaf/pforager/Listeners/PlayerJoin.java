@@ -26,16 +26,6 @@ public class PlayerJoin implements Listener {
 
         }
 
-        if (plugin.playerDataManager.playerHasXP(player)){
-
-            plugin.PlayerXP.put(player, plugin.playerDataManager.getPlayerXP(player));
-
-        } else {
-
-            plugin.playerDataManager.setPlayerXP(player, 0);
-
-        }
-
         if (plugin.playerDataManager.playerHasCoin(player)){
 
             plugin.PlayerCoins.put(player, plugin.playerDataManager.getPlayerCoin(player));
@@ -53,6 +43,16 @@ public class PlayerJoin implements Listener {
         } else {
 
             plugin.playerDataManager.setPlayerLevel(player, 1);
+
+        }
+
+        if (plugin.playerDataManager.playerHasXP(player)){
+
+            plugin.PlayerXP.put(player, plugin.playerDataManager.getPlayerXP(player));
+
+        } else {
+
+            plugin.playerDataManager.setPlayerXP(player, 0);
 
         }
 

@@ -76,16 +76,6 @@ public final class Main extends JavaPlugin {
 
             for (Player online : Bukkit.getOnlinePlayers()){
 
-                if (playerDataManager.playerHasXP(online)){
-
-                    PlayerXP.put(online, playerDataManager.getPlayerXP(online));
-
-                } else {
-
-                    playerDataManager.setPlayerXP(online, 0);
-
-                }
-
                 if (playerDataManager.playerHasCoin(online)){
 
                     PlayerCoins.put(online, playerDataManager.getPlayerCoin(online));
@@ -103,6 +93,16 @@ public final class Main extends JavaPlugin {
                 } else {
 
                     playerDataManager.setPlayerLevel(online, 1);
+
+                }
+
+                if (playerDataManager.playerHasXP(online)){
+
+                    PlayerXP.put(online, playerDataManager.getPlayerXP(online));
+
+                } else {
+
+                    playerDataManager.setPlayerXP(online, 0);
 
                 }
 
