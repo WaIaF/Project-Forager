@@ -37,9 +37,7 @@ public class SetCoin implements CommandExecutor {
 
                             int coin = Integer.parseInt(args[0]);
 
-                            plugin.PlayerCoins.put(Commandsender, coin);
-                            plugin.playerDataManager.getConfig().set("Players." + Commandsender.getName() + "." + Commandsender.getUniqueId().toString() + ".Coins", coin);
-                            plugin.playerDataManager.saveConfig();
+                            plugin.playerDataManager.setPlayerCoin(Commandsender, coin);
                             Commandsender.sendMessage(ChatColor.GREEN + "Thành công!");
                             Commandsender.playSound(Commandsender.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 
@@ -58,9 +56,7 @@ public class SetCoin implements CommandExecutor {
                             Player player = Bukkit.getPlayer(args[1]);
                             if (player != null && player.hasPlayedBefore() && player.isOnline()){
 
-                                plugin.PlayerCoins.put(player, coin);
-                                plugin.playerDataManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", coin);
-                                plugin.playerDataManager.saveConfig();
+                                plugin.playerDataManager.setPlayerCoin(player, coin);
                                 Commandsender.sendMessage(ChatColor.GREEN + "Thành công!");
                                 Commandsender.playSound(Commandsender.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
 

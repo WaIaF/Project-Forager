@@ -16,6 +16,8 @@ public class Scoreboard {
     public void createBoard(Player player){
 
         JPerPlayerMethodBasedScoreboard scoreboard = new JPerPlayerMethodBasedScoreboard();
+        int LevelReq = plugin.LevelRequirement.get(plugin.PlayerLevel.get(player));
+
         scoreboard.addPlayer(player);
         scoreboard.setTitle(player, ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
         scoreboard.setLines(player,
@@ -28,14 +30,14 @@ public class Scoreboard {
                 StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 19),
                 "",
                 StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 19),
-                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(Math.round(player.getExp())), 19),
+                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 19),
                 "",
                 ChatColor.YELLOW + "github.com/WaIaF");
 
-        updateScoreboard(scoreboard, player);
+        updateScoreboard(scoreboard, player, LevelReq);
     }
 
-    private void updateScoreboard(JPerPlayerMethodBasedScoreboard scoreboard, Player player){
+    private void updateScoreboard(JPerPlayerMethodBasedScoreboard scoreboard, Player player, Integer LevelReq){
 
         new BukkitRunnable(){
 
@@ -52,7 +54,7 @@ public class Scoreboard {
                         StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 19),
                         "",
                         StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 19),
-                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(Math.round(player.getExp())), 19),
+                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 19),
                         "",
                         ChatColor.YELLOW + "github.com/WaIaF");
 

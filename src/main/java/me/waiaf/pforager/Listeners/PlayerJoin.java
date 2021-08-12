@@ -26,15 +26,33 @@ public class PlayerJoin implements Listener {
 
         }
 
-        if (plugin.playerDataManager.getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins")){
+        if (plugin.playerDataManager.playerHasXP(player)){
 
-            plugin.PlayerCoins.put(player, plugin.playerDataManager.getConfig().getInt("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins"));
+            plugin.PlayerXP.put(player, plugin.playerDataManager.getPlayerXP(player));
 
         } else {
 
-            plugin.PlayerCoins.put(player, 0);
-            plugin.playerDataManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", 0);
-            plugin.playerDataManager.saveConfig();
+            plugin.playerDataManager.setPlayerXP(player, 0);
+
+        }
+
+        if (plugin.playerDataManager.playerHasCoin(player)){
+
+            plugin.PlayerCoins.put(player, plugin.playerDataManager.getPlayerCoin(player));
+
+        } else {
+
+            plugin.playerDataManager.setPlayerCoin(player, 0);
+
+        }
+
+        if (plugin.playerDataManager.playerHasLevel(player)){
+
+            plugin.PlayerLevel.put(player, plugin.playerDataManager.getPlayerLevel(player));
+
+        } else {
+
+            plugin.playerDataManager.setPlayerLevel(player, 1);
 
         }
 

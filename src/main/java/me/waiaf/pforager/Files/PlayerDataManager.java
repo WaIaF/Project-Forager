@@ -3,6 +3,7 @@ package me.waiaf.pforager.Files;
 import me.waiaf.pforager.Main;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,5 +70,66 @@ public class PlayerDataManager {
 
         }
     }
+
+    public int getPlayerXP(Player player){
+
+        return getConfig().getInt("Players." + player.getName() + "." + player.getUniqueId().toString() + ".XP");
+
+    }
+
+    public int getPlayerCoin(Player player){
+
+        return getConfig().getInt("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins");
+
+    }
+
+    public int getPlayerLevel(Player player){
+
+        return getConfig().getInt("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Level");
+
+    }
+
+    public void setPlayerXP(Player player, Integer xp){
+
+        getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".XP", xp);
+        saveConfig();
+        plugin.PlayerLevel.put(player, xp);
+
+    }
+
+    public void setPlayerCoin(Player player, Integer coin){
+
+        getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", coin);
+        saveConfig();
+        plugin.PlayerCoins.put(player, coin);
+
+    }
+
+    public void setPlayerLevel(Player player, Integer level){
+
+        getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Level", level);
+        saveConfig();
+        plugin.PlayerLevel.put(player, level);
+
+    }
+
+    public boolean playerHasXP(Player player){
+
+        return getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".XP");
+
+    }
+
+    public boolean playerHasCoin(Player player){
+
+        return getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins");
+
+    }
+
+    public boolean playerHasLevel(Player player){
+
+        return getConfig().contains("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Level");
+
+    }
+
 
 }

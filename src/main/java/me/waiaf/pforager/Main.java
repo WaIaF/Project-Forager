@@ -26,7 +26,11 @@ public final class Main extends JavaPlugin {
 
     public PlayerDataManager playerDataManager;
 
+    public HashMap<Integer, Integer> LevelRequirement = new HashMap<>();
+
     public HashMap<Player, Integer> PlayerCoins = new HashMap<>();
+    public HashMap<Player, Integer> PlayerXP = new HashMap<>();
+    public HashMap<Player, Integer> PlayerLevel = new HashMap<>();
 
     public HashMap<Location, String> CustomBlocks = new HashMap<>();
 
@@ -40,6 +44,26 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable(){
 
+        for (int i = 0; i < 30; i++){
+
+            int xpReqLvOne = 25;
+
+            if (i == 0){
+
+                LevelRequirement.put(i+1, xpReqLvOne);
+
+            } else {
+
+                float xpReqLF = 25f;
+                long xpReqL = Math.round(xpReqLvOne*i + (xpReqLF*i/2));
+                int xpReq = (int) xpReqL;
+
+                LevelRequirement.put(i+1, xpReq);
+
+            }
+
+        }
+
         this.playerDataManager = new PlayerDataManager(this);
         this.scoreboard = new Scoreboard(this);
 
@@ -49,17 +73,36 @@ public final class Main extends JavaPlugin {
         setExecutors();
 
         if (!Bukkit.getOnlinePlayers().isEmpty())
+
             for (Player online : Bukkit.getOnlinePlayers()){
 
-                if (playerDataManager.getConfig().contains("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins")){
+                if (playerDataManager.playerHasXP(online)){
 
-                    PlayerCoins.put(online, playerDataManager.getConfig().getInt("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins"));
+                    PlayerXP.put(online, playerDataManager.getPlayerXP(online));
 
                 } else {
 
-                    PlayerCoins.put(online, 0);
-                    playerDataManager.getConfig().set("Players." + online.getName() + "." + online.getUniqueId().toString() + ".Coins", 0);
-                    playerDataManager.saveConfig();
+                    playerDataManager.setPlayerXP(online, 0);
+
+                }
+
+                if (playerDataManager.playerHasCoin(online)){
+
+                    PlayerCoins.put(online, playerDataManager.getPlayerCoin(online));
+
+                } else {
+
+                    playerDataManager.setPlayerCoin(online, 0);
+
+                }
+
+                if (playerDataManager.playerHasLevel(online)){
+
+                    PlayerLevel.put(online, playerDataManager.getPlayerLevel(online));
+
+                } else {
+
+                    playerDataManager.setPlayerLevel(online, 1);
 
                 }
 
@@ -81,8 +124,21 @@ public final class Main extends JavaPlugin {
         for (Map.Entry<Player, Integer> entry : PlayerCoins.entrySet()){
 
             Player player = entry.getKey();
-            playerDataManager.getConfig().set("Players." + player.getName() + "." + player.getUniqueId().toString() + ".Coins", entry.getValue());
-            playerDataManager.saveConfig();
+            playerDataManager.setPlayerCoin(player, entry.getValue());
+
+        }
+
+        for (Map.Entry<Player, Integer> entry : PlayerLevel.entrySet()){
+
+            Player player = entry.getKey();
+            playerDataManager.setPlayerLevel(player, entry.getValue());
+
+        }
+
+        for (Map.Entry<Player, Integer> entry : PlayerXP.entrySet()){
+
+            Player player = entry.getKey();
+            playerDataManager.setPlayerXP(player, entry.getValue());
 
         }
 
