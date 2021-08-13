@@ -34,7 +34,6 @@ public class FishTrapPlace implements Listener {
 
                 TrapDoor FishTrap = (TrapDoor) event.getBlock().getBlockData();
                 FishTrap.setWaterlogged(true);
-                FishTrap.setHalf(Bisected.Half.TOP);
 
                 plugin.CustomBlocks.put(event.getBlock().getLocation(), "FishTrap");
                 plugin.FishTrapCaughtStatus.put(event.getBlock().getLocation(), false);
