@@ -12,3 +12,9 @@ commands:
   setcoin:
     usage: /setcoin
     description: đặt số coin của người chơi
+  setlevel:
+    usage: /setlevel
+    description: đặt level của người chơi
+  setxp:
+    usage: /setxp
+    description: đặt xp của người chơi

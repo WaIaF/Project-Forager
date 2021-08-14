@@ -131,5 +131,11 @@ public class PlayerDataManager {
 
     }
 
+    public void increasePlayerXP(Player player, Integer integer){
+
+       setPlayerXP(player, plugin.playerDataManager.getPlayerXP(player) + integer);
+
+    }
+
 
 }

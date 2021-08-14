@@ -2,9 +2,7 @@ package me.waiaf.pforager.Listeners;
 
 import me.waiaf.pforager.Main;
 import me.waiaf.pforager.Utils.ItemManager;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,34 +25,51 @@ public class OreBreak implements Listener {
 
         Player player = event.getPlayer();
         ItemStack itemStack = player.getInventory().getItemInMainHand();
+        Block block = event.getBlock();
         Random random = new Random();
         int rng = random.nextInt(100) + 1;
 
         if (itemStack.isSimilar(ItemManager.IronPickaxe)){
 
-            switch (event.getBlock().getType()){
+            switch (block.getType()){
 
                 case COAL_ORE:
 
-                    CancelAndSetAir(event, event.getBlock());
-                    DropWithCobble(new ItemStack(Material.COAL), event.getBlock());
-                    RNGBonus(new ItemStack(Material.COAL), event.getBlock());
+                    CancelAndSetAir(event, block);
+                    DropWithCobble(new ItemStack(Material.COAL), block);
+                    RNGBonus(new ItemStack(Material.COAL), block);
 
                     break;
 
                 case IRON_ORE:
 
-                    CancelAndSetAir(event, event.getBlock());
-                    DropWithCobble(new ItemStack(Material.RAW_IRON), event.getBlock());
-                    RNGBonus(new ItemStack(Material.RAW_IRON), event.getBlock());
+                    CancelAndSetAir(event, block);
+                    DropWithCobble(new ItemStack(Material.RAW_IRON), block);
+                    RNGBonus(new ItemStack(Material.RAW_IRON), block);
 
                     break;
 
                 case GOLD_ORE:
 
+                    CancelAndSetAir(event, block);
+                    DropWithCobble(new ItemStack(Material.RAW_GOLD), block);
+                    RNGBonus(new ItemStack(Material.RAW_GOLD), block);
+
+                    break;
+
+                case DIAMOND_ORE:
+
+                    CancelAndSetAir(event, block);
+                    DropWithCobble(new ItemStack(Material.DIAMOND), block);
+                    RNGBonus(new ItemStack(Material.DIAMOND), block);
+
+                    break;
+
+                case ANCIENT_DEBRIS:
+
                     CancelAndSetAir(event, event.getBlock());
-                    DropWithCobble(new ItemStack(Material.RAW_GOLD), event.getBlock());
-                    RNGBonus(new ItemStack(Material.RAW_GOLD), event.getBlock());
+                    block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.ANCIENT_DEBRIS));
+                    RNGBonus(new ItemStack(Material.ANCIENT_DEBRIS), event.getBlock());
 
                     break;
             }

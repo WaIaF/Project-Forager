@@ -2,6 +2,8 @@ package me.waiaf.pforager;
 
 import me.waiaf.pforager.Commands.GetItem;
 import me.waiaf.pforager.Commands.SetCoin;
+import me.waiaf.pforager.Commands.SetLevel;
+import me.waiaf.pforager.Commands.SetXP;
 import me.waiaf.pforager.Files.PlayerDataManager;
 import me.waiaf.pforager.Listeners.*;
 import me.waiaf.pforager.Listeners.FishTrap.FishTrapBreak;
@@ -158,6 +160,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new FishTrapPlace(this), this);
         pluginManager.registerEvents(new FishTrapInteract(this), this);
         pluginManager.registerEvents(new FishTrapBreak(this), this);
+        pluginManager.registerEvents(new BlockBreak(this), this);
 
     }
 
@@ -165,6 +168,14 @@ public final class Main extends JavaPlugin {
 
         this.getCommand("getitem").setExecutor(new GetItem());
         this.getCommand("setcoin").setExecutor(new SetCoin(this));
+        this.getCommand("setlevel").setExecutor(new SetLevel(this));
+        this.getCommand("setxp").setExecutor(new SetXP(this));
+
+    }
+
+    public int getPlayerXPReq(Player player){
+
+        return LevelRequirement.get(playerDataManager.getPlayerLevel(player));
 
     }
 
