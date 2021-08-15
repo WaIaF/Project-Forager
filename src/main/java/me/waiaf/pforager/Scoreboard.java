@@ -16,7 +16,6 @@ public class Scoreboard {
     public void createBoard(Player player){
 
         JPerPlayerMethodBasedScoreboard scoreboard = new JPerPlayerMethodBasedScoreboard();
-        int LevelReq = plugin.LevelRequirement.get(plugin.PlayerLevel.get(player));
 
         scoreboard.addPlayer(player);
         scoreboard.setTitle(player, ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
@@ -28,15 +27,16 @@ public class Scoreboard {
                 StringUtils.center(ChatColor.WHITE + "Coins", 21),
                 StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 19),
                 "",
-                StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 21),
-                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 21),
+                StringUtils.center(ChatColor.WHITE + "Level", 21),
+                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerLevel(player)), 21),
+                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + plugin.getPlayerXPReq(player), 21),
                 "",
                 StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 21));
 
-        updateScoreboard(scoreboard, player, LevelReq);
+        updateScoreboard(scoreboard, player);
     }
 
-    private void updateScoreboard(JPerPlayerMethodBasedScoreboard scoreboard, Player player, Integer LevelReq){
+    private void updateScoreboard(JPerPlayerMethodBasedScoreboard scoreboard, Player player){
 
         new BukkitRunnable(){
 
@@ -51,14 +51,15 @@ public class Scoreboard {
                         StringUtils.center(ChatColor.WHITE + "Coins", 21),
                         StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 21),
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Kinh nghiệm", 21),
-                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + LevelReq, 21),
+                        StringUtils.center(ChatColor.WHITE + "Level", 21),
+                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerLevel(player)), 21),
+                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + plugin.getPlayerXPReq(player), 21),
                         "",
                         StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 21));
 
             }
 
-        }.runTaskTimer(Main.getPlugin(Main.class), 3, 3);
+        }.runTaskTimer(Main.getPlugin(Main.class), 2, 2);
 
     }
 
