@@ -3,7 +3,6 @@ package me.waiaf.pforager.Listeners;
 import me.waiaf.pforager.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,58 +17,11 @@ public class BlockBreak implements Listener {
     }
 
     @EventHandler
-    public void BlockBreakEventForXP(BlockBreakEvent event){
+    public void BlockBreakEventForLV(BlockBreakEvent event){
 
         Block block = event.getBlock();
         Material material = block.getType();
         Player player = event.getPlayer();
-        int xp = plugin.playerDataManager.getPlayerXP(player);
-
-        switch (material) {
-            case OAK_LOG, COAL_ORE -> {
-
-                xp = xp + 2;
-                plugin.playerDataManager.setPlayerXP(player, xp);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-                player.sendMessage(ChatColor.YELLOW + "+2 XP");
-
-            } case STONE -> {
-
-                xp = xp + 1;
-                plugin.playerDataManager.setPlayerXP(player, xp);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-                player.sendMessage(ChatColor.YELLOW + "+1 XP");
-
-            } case IRON_ORE -> {
-
-                xp = xp + 4;
-                plugin.playerDataManager.setPlayerXP(player, xp);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-                player.sendMessage(ChatColor.YELLOW + "+4 XP");
-
-            } case GOLD_ORE -> {
-
-                xp = xp + 5;
-                plugin.playerDataManager.setPlayerXP(player, xp);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-                player.sendMessage(ChatColor.YELLOW + "+5 XP");
-
-            } case DIAMOND_ORE -> {
-
-                xp = xp + 6;
-                plugin.playerDataManager.setPlayerXP(player, xp);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-                player.sendMessage(ChatColor.YELLOW + "+6 XP");
-
-            } case ANCIENT_DEBRIS -> {
-
-                xp = xp + 12;
-                plugin.playerDataManager.setPlayerXP(player, xp);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-                player.sendMessage(ChatColor.YELLOW + "+12 XP");
-
-            }
-        }
 
         if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
 
