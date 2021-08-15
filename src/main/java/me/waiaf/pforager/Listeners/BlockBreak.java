@@ -22,78 +22,20 @@ public class BlockBreak implements Listener {
         Material material = block.getType();
         Player player = event.getPlayer();
 
-        switch (material){
+        switch (material) {
+            case OAK_LOG, COAL_ORE -> plugin.playerDataManager.increasePlayerXP(player, 2);
+            case STONE -> plugin.playerDataManager.increasePlayerXP(player, 1);
+            case IRON_ORE -> plugin.playerDataManager.increasePlayerXP(player, 4);
+            case GOLD_ORE -> plugin.playerDataManager.increasePlayerXP(player, 5);
+            case DIAMOND_ORE -> plugin.playerDataManager.increasePlayerXP(player, 7);
+            case ANCIENT_DEBRIS -> plugin.playerDataManager.increasePlayerXP(player, 12);
+        }
 
-            case OAK_LOG, COAL_ORE:
+        if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
 
-                plugin.playerDataManager.increasePlayerXP(player, 2);
+            plugin.playerDataManager.setPlayerXP(player, 0);
+            plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
 
-                if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
-
-                    plugin.playerDataManager.setPlayerXP(player, 0);
-                    plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-
-                }
-                break;
-
-            case STONE:
-
-                plugin.playerDataManager.increasePlayerXP(player, 1);
-
-                if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
-
-                    plugin.playerDataManager.setPlayerXP(player, 0);
-                    plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-
-                }
-                break;
-
-            case IRON_ORE:
-
-                plugin.playerDataManager.increasePlayerXP(player, 4);
-
-                if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
-
-                    plugin.playerDataManager.setPlayerXP(player, 0);
-                    plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-
-                }
-                break;
-
-            case GOLD_ORE:
-
-                plugin.playerDataManager.increasePlayerXP(player, 5);
-
-                if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
-
-                    plugin.playerDataManager.setPlayerXP(player, 0);
-                    plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-
-                }
-                break;
-
-            case DIAMOND_ORE:
-
-                plugin.playerDataManager.increasePlayerXP(player, 7);
-
-                if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
-
-                    plugin.playerDataManager.setPlayerXP(player, 0);
-                    plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-
-                }
-
-            case ANCIENT_DEBRIS:
-
-                plugin.playerDataManager.increasePlayerXP(player, 12);
-
-                if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
-
-                    plugin.playerDataManager.setPlayerXP(player, 0);
-                    plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-
-                }
-                break;
         }
 
     }
