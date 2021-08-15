@@ -23,15 +23,40 @@ public class BlockBreak implements Listener {
         Block block = event.getBlock();
         Material material = block.getType();
         Player player = event.getPlayer();
-        int playercurrentxp = plugin.playerDataManager.getPlayerXP(player);
+        int xp = plugin.playerDataManager.getPlayerXP(player);
 
         switch (material) {
-            case OAK_LOG, COAL_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 2);
-            case STONE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 1);
-            case IRON_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 4);
-            case GOLD_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 5);
-            case DIAMOND_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 6);
-            case ANCIENT_DEBRIS -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 12);
+            case OAK_LOG, COAL_ORE -> {
+
+                xp = xp + 2;
+                plugin.playerDataManager.setPlayerXP(player, xp);
+
+            } case STONE -> {
+
+                xp = xp + 1;
+                plugin.playerDataManager.setPlayerXP(player, xp);
+
+            } case IRON_ORE -> {
+
+                xp = xp + 4;
+                plugin.playerDataManager.setPlayerXP(player, xp);
+
+            } case GOLD_ORE -> {
+
+                xp = xp + 5;
+                plugin.playerDataManager.setPlayerXP(player, xp);
+
+            } case DIAMOND_ORE -> {
+
+                xp = xp + 6;
+                plugin.playerDataManager.setPlayerXP(player, xp);
+
+            } case ANCIENT_DEBRIS -> {
+
+                xp = xp + 12;
+                plugin.playerDataManager.setPlayerXP(player, xp);
+
+            }
         }
 
         if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){

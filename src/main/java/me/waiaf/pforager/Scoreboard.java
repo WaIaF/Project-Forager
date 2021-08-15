@@ -21,19 +21,19 @@ public class Scoreboard {
         scoreboard.setTitle(player, ChatColor.WHITE + "Project: " + ChatColor.GREEN + "" + ChatColor.BOLD + "Forager");
         scoreboard.setLines(player,
                 "",
-                StringUtils.center(ChatColor.WHITE + "Tên người chơi", 21),
-                StringUtils.center(ChatColor.DARK_GREEN + player.getName(), 21),
+                StringUtils.center(ChatColor.WHITE + "Tên người chơi", 23),
+                StringUtils.center(ChatColor.DARK_GREEN + player.getName(), 23),
                 "",
-                StringUtils.center(ChatColor.WHITE + "Coins", 21),
-                StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 21),
+                StringUtils.center(ChatColor.WHITE + "Coins", 23),
+                StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 23),
                 "",
-                StringUtils.center(ChatColor.WHITE + "Level", 21),
-                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerLevel(player)), 21),
+                StringUtils.center(ChatColor.WHITE + "Level", 23),
+                StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerLevel(player)), 23),
                 "",
-                StringUtils.center(ChatColor.WHITE + "Tiến độ", 21),
-                StringUtils.center(ChatColor.GREEN + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + plugin.getPlayerXPReq(player) + " (" + Math.round(((float)plugin.playerDataManager.getPlayerXP(player)/(float)plugin.getPlayerXPReq(player))*100) + "%)", 21),
+                StringUtils.center(ChatColor.WHITE + "Tiến độ", 23),
+                StringUtils.center(ChatColor.GREEN + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + plugin.getPlayerXPReq(player) + " (" + Math.round(((float)plugin.playerDataManager.getPlayerXP(player)/(float)plugin.getPlayerXPReq(player))*100) + "%)", 23),
                 "",
-                StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 21));
+                StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 23));
 
         updateScoreboard(scoreboard, player);
     }
@@ -47,19 +47,19 @@ public class Scoreboard {
 
                 scoreboard.setLines(player,
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Tên người chơi", 21),
-                        StringUtils.center(ChatColor.DARK_GREEN + player.getName(), 21),
+                        StringUtils.center(ChatColor.WHITE + "Tên người chơi", 23),
+                        StringUtils.center(ChatColor.DARK_GREEN + player.getName(), 23),
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Coins", 21),
-                        StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 21),
+                        StringUtils.center(ChatColor.WHITE + "Coins", 23),
+                        StringUtils.center(ChatColor.YELLOW + String.format("%,d", plugin.PlayerCoins.get(player)), 23),
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Level", 21),
-                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerLevel(player)), 21),
+                        StringUtils.center(ChatColor.WHITE + "Level", 23),
+                        StringUtils.center(ChatColor.LIGHT_PURPLE + String.valueOf(plugin.playerDataManager.getPlayerLevel(player)), 23),
                         "",
-                        StringUtils.center(ChatColor.WHITE + "Tiến độ", 21),
-                        StringUtils.center(ChatColor.GREEN + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + plugin.getPlayerXPReq(player) + " (" + Math.round(((float)plugin.playerDataManager.getPlayerXP(player)/(float)plugin.getPlayerXPReq(player))*100) + "%)", 21),
+                        StringUtils.center(ChatColor.WHITE + "Tiến độ", 23),
+                        StringUtils.center(ChatColor.GREEN + String.valueOf(plugin.playerDataManager.getPlayerXP(player)) + "/" + plugin.getPlayerXPReq(player) + " (" + Math.round(((float)plugin.playerDataManager.getPlayerXP(player)/(float)plugin.getPlayerXPReq(player))*100) + "%)", 23),
                         "",
-                        StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 21));
+                        StringUtils.center(ChatColor.YELLOW + "github.com/WaIaF", 23));
 
             }
 
