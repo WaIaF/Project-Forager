@@ -46,7 +46,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable(){
 
-        for (int i = 0; i < 30; i++){
+        for (int i = 0; i < 29; i++){
 
             int xpReqLvOne = 25;
 
@@ -65,6 +65,8 @@ public final class Main extends JavaPlugin {
             }
 
         }
+
+        LevelRequirement.put(30, 2000000000);
 
         this.playerDataManager = new PlayerDataManager(this);
         this.scoreboard = new Scoreboard(this);

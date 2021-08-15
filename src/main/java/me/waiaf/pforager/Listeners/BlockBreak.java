@@ -23,14 +23,15 @@ public class BlockBreak implements Listener {
         Block block = event.getBlock();
         Material material = block.getType();
         Player player = event.getPlayer();
+        int playercurrentxp = plugin.playerDataManager.getPlayerXP(player);
 
         switch (material) {
-            case OAK_LOG, COAL_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 2));
-            case STONE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 1));
-            case IRON_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 4));
-            case GOLD_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 5));
-            case DIAMOND_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 6));
-            case ANCIENT_DEBRIS -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 7));
+            case OAK_LOG, COAL_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 2);
+            case STONE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 1);
+            case IRON_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 4);
+            case GOLD_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 5);
+            case DIAMOND_ORE -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 6);
+            case ANCIENT_DEBRIS -> plugin.playerDataManager.setPlayerXP(player, playercurrentxp + 12);
         }
 
         if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
@@ -38,7 +39,7 @@ public class BlockBreak implements Listener {
             plugin.playerDataManager.setPlayerXP(player, 0);
             plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-            player.sendTitle(ChatColor.YELLOW + "Bạn đã lên cấp!", null, 0, 1, 0);
+            player.sendTitle(ChatColor.YELLOW + "Bạn đã lên cấp!", null, 0, 10, 0);
 
         }
 
