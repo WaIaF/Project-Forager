@@ -24,7 +24,7 @@ public class BlockBreak implements Listener {
 
         switch (material){
 
-            case OAK_LOG:
+            case OAK_LOG, COAL_ORE:
 
                 plugin.playerDataManager.increasePlayerXP(player, 2);
 
@@ -39,18 +39,6 @@ public class BlockBreak implements Listener {
             case STONE:
 
                 plugin.playerDataManager.increasePlayerXP(player, 1);
-
-                if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
-
-                    plugin.playerDataManager.setPlayerXP(player, 0);
-                    plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-
-                }
-                break;
-
-            case COAL_ORE:
-
-                plugin.playerDataManager.increasePlayerXP(player, 3);
 
                 if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
 
