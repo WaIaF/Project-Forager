@@ -31,47 +31,32 @@ public class OreBreak implements Listener {
 
         if (itemStack.isSimilar(ItemManager.IronPickaxe)){
 
-            switch (block.getType()){
-
-                case COAL_ORE:
-
+            switch (block.getType()) {
+                case COAL_ORE -> {
                     CancelAndSetAir(event, block);
                     DropWithCobble(new ItemStack(Material.COAL), block);
                     RNGBonus(new ItemStack(Material.COAL), block);
-
-                    break;
-
-                case IRON_ORE:
-
+                }
+                case IRON_ORE -> {
                     CancelAndSetAir(event, block);
                     DropWithCobble(new ItemStack(Material.RAW_IRON), block);
                     RNGBonus(new ItemStack(Material.RAW_IRON), block);
-
-                    break;
-
-                case GOLD_ORE:
-
+                }
+                case GOLD_ORE -> {
                     CancelAndSetAir(event, block);
                     DropWithCobble(new ItemStack(Material.RAW_GOLD), block);
                     RNGBonus(new ItemStack(Material.RAW_GOLD), block);
-
-                    break;
-
-                case DIAMOND_ORE:
-
+                }
+                case DIAMOND_ORE -> {
                     CancelAndSetAir(event, block);
                     DropWithCobble(new ItemStack(Material.DIAMOND), block);
                     RNGBonus(new ItemStack(Material.DIAMOND), block);
-
-                    break;
-
-                case ANCIENT_DEBRIS:
-
+                }
+                case ANCIENT_DEBRIS -> {
                     CancelAndSetAir(event, event.getBlock());
                     block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.ANCIENT_DEBRIS));
                     RNGBonus(new ItemStack(Material.ANCIENT_DEBRIS), event.getBlock());
-
-                    break;
+                }
             }
 
         }
