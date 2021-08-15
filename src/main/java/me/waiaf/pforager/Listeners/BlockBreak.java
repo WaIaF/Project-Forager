@@ -1,7 +1,9 @@
 package me.waiaf.pforager.Listeners;
 
 import me.waiaf.pforager.Main;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,18 +25,20 @@ public class BlockBreak implements Listener {
         Player player = event.getPlayer();
 
         switch (material) {
-            case OAK_LOG, COAL_ORE -> plugin.playerDataManager.increasePlayerXP(player, 2);
-            case STONE -> plugin.playerDataManager.increasePlayerXP(player, 1);
-            case IRON_ORE -> plugin.playerDataManager.increasePlayerXP(player, 4);
-            case GOLD_ORE -> plugin.playerDataManager.increasePlayerXP(player, 5);
-            case DIAMOND_ORE -> plugin.playerDataManager.increasePlayerXP(player, 7);
-            case ANCIENT_DEBRIS -> plugin.playerDataManager.increasePlayerXP(player, 12);
+            case OAK_LOG, COAL_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 2));
+            case STONE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 1));
+            case IRON_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 4));
+            case GOLD_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 5));
+            case DIAMOND_ORE -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 6));
+            case ANCIENT_DEBRIS -> plugin.playerDataManager.setPlayerXP(player, (plugin.playerDataManager.getPlayerXP(player) + 7));
         }
 
         if (plugin.playerDataManager.getPlayerXP(player) >= plugin.getPlayerXPReq(player)){
 
             plugin.playerDataManager.setPlayerXP(player, 0);
             plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+            player.sendTitle(ChatColor.YELLOW + "Bạn đã lên cấp!", null, 0, 1, 0);
 
         }
 

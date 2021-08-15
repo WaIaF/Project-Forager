@@ -83,7 +83,6 @@ public class OreBreak implements Listener {
 
         if (rng >= 60){
 
-            block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.COBBLESTONE));
             block.getWorld().dropItemNaturally(block.getLocation(), itemStack);
 
         }
