@@ -30,31 +30,43 @@ public class BlockBreak implements Listener {
 
                 xp = xp + 2;
                 plugin.playerDataManager.setPlayerXP(player, xp);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                player.sendMessage(ChatColor.YELLOW + "+2 XP");
 
             } case STONE -> {
 
                 xp = xp + 1;
                 plugin.playerDataManager.setPlayerXP(player, xp);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                player.sendMessage(ChatColor.YELLOW + "+1 XP");
 
             } case IRON_ORE -> {
 
                 xp = xp + 4;
                 plugin.playerDataManager.setPlayerXP(player, xp);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                player.sendMessage(ChatColor.YELLOW + "+4 XP");
 
             } case GOLD_ORE -> {
 
                 xp = xp + 5;
                 plugin.playerDataManager.setPlayerXP(player, xp);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                player.sendMessage(ChatColor.YELLOW + "+5 XP");
 
             } case DIAMOND_ORE -> {
 
                 xp = xp + 6;
                 plugin.playerDataManager.setPlayerXP(player, xp);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                player.sendMessage(ChatColor.YELLOW + "+6 XP");
 
             } case ANCIENT_DEBRIS -> {
 
                 xp = xp + 12;
                 plugin.playerDataManager.setPlayerXP(player, xp);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                player.sendMessage(ChatColor.YELLOW + "+12 XP");
 
             }
         }
@@ -63,7 +75,6 @@ public class BlockBreak implements Listener {
 
             plugin.playerDataManager.setPlayerXP(player, 0);
             plugin.playerDataManager.setPlayerLevel(player, plugin.playerDataManager.getPlayerLevel(player) + 1);
-            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
             player.sendTitle(ChatColor.YELLOW + "Bạn đã lên cấp!", null, 0, 10, 0);
 
         }
