@@ -64,6 +64,10 @@ public class WoodBreak implements Listener {
                     event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
                     event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.OAK_PLANKS));
                     RNGBonus(new ItemStack(Material.OAK_PLANKS), event.getBlock());
+                    xp = xp + 2;
+                    plugin.playerDataManager.setPlayerXP(player, xp);
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                    player.sendMessage(ChatColor.YELLOW + "+2 XP");
                 }
                 case JUNGLE_LOG -> {
                     event.setCancelled(true);
@@ -117,11 +121,6 @@ public class WoodBreak implements Listener {
                     event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.SPRUCE_PLANKS));
                 }
             }
-
-            xp = xp + 2;
-            plugin.playerDataManager.setPlayerXP(player, xp);
-            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
-            player.sendMessage(ChatColor.YELLOW + "+2 XP");
 
         }
 
