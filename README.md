@@ -2,7 +2,7 @@
 
 A Recreation of the game Forager in Spigot
 
-Current Status: WIP
+Current Status: Abandoned lmaoooooooooooooooooooooooooooooooooo
 
 Todo: ~~No idea lmaooooooooo~~
 
